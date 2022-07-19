@@ -1,9 +1,12 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Images = sequelize.define('Images', {
+  const Image = sequelize.define('Image', {
     locationId: {
       type: DataTypes.INTEGER,
-      references: { model: Locations }
+      references: {
+        model: 'Locations',
+        key: 'id'
+      }
     },
     url: {
       type: DataTypes.STRING,
@@ -16,9 +19,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE
     }
   }, {});
-  Images.associate = function(models) {
+  Image.associate = function(models) {
     // associations can be defined here
-    Images.belongsTo(models.Location, { foreignKey: 'locationId', onDelete: 'cascade' });
+    Image.belongsTo(models.Location, { foreignKey: 'locationId', onDelete: 'cascade' });
   };
-  return Images;
+  return Image;
 };

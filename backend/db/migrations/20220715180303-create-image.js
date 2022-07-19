@@ -10,7 +10,11 @@ module.exports = {
       },
       locationId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'Locations',
+          key: 'id'
+        }
       },
       url: {
         type: Sequelize.STRING(150),
