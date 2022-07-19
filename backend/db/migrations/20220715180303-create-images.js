@@ -9,24 +9,22 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       locationId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       url: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(150),
+        allowNull: false,
       },
       createdAt: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.fn('now')
       },
       updatedAt: {
-        type: Sequelize.DATE
-      },
-      createdAt: {
+        type: Sequelize.DATE,
         allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        defaultValue: Sequelize.fn('now')
       }
     });
   },

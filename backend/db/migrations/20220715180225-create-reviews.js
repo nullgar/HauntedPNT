@@ -9,30 +9,30 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       locationId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       userId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       review: {
-        type: Sequelize.STRING
+        allowNull: false,
+        type: Sequelize.STRING(250)
       },
       rating: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       createdAt: {
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        type: Sequelize.DATE
-      },
-      createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       }
     });
   },
