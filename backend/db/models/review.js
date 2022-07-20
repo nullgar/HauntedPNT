@@ -6,15 +6,18 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       references: {
         model: 'Locations',
-      key: 'id'
-    }
+        key: 'id',
+      },
+      onDelete: 'CASCADE'
     },
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'Users',
-      key: 'id' }
+        key: 'id'
+      },
+      onDelete: 'CASCADE'
     },
     review: {
       type: DataTypes.STRING,
@@ -35,8 +38,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Review.associate = function(models) {
     // associations can be defined here
-    Review.belongsTo(models.Location, { foreignKey: 'locationId', onDelete: 'cascade'  });
-    Review.belongsTo(models.User, { foreignKey: 'userId', onDelete: 'cascade'  });
+    Review.belongsTo(models.Location, { foreignKey: 'locationId'});
+    Review.belongsTo(models.User, { foreignKey: 'userId' });
   };
   return Review;
 };

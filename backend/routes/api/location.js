@@ -1,8 +1,5 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-
-const { setTokenCookie, requireAuth } = require('../../utils/auth');
-
 const { Location } = require('../../db/models');
 
 const { handleValidationErrors } = require('../../utils/validation');
@@ -15,9 +12,9 @@ router.get(
         const locations = await Location.findAll();
 
         if (locations) {
-            return res.json({
+            return res.json(
                 locations
-            });
+            );
         }
 
     })
@@ -25,14 +22,15 @@ router.get(
 router.get(
     '/:locationId',
     asyncHandler(async (req, res) => {
+        const {locationId} = req.params
+        const location = await Location.findByPk(locationId);
 
 
-        const locations = await Location.findAll();
 
-        if (locations) {
-            return res.json({
-                locations
-            });
+        if (location) {
+            return res.json(
+                location
+            );
         }
 
     })
@@ -46,20 +44,53 @@ router.post(
         const newLocation = await Location.create(data);
 
         if (newLocation) {
-            res.json(data)
+            res.json(newLocation)
 
         }
     })
 );
 router.put(
-    '/',
+    '/:locationId',
     asyncHandler(async (req, res) => {
-        const {locationId} = req.body;
+        const {locationId} = req.params;
+        const location = req.body;
 
-        // const updatedLocation = await Location.({where : {id: locationId}});
-        await setTokenCookie(res, data);
-        // if (newLocation)
-        res.send('ok')
+        const updatedLocation = await Location.update(location, {where: {id: locationId}});
+
+
+        if (updatedLocation) {
+            res.json(updatedLocation)
+
+        }
+    })
+);
+router.delete(
+    '/:locationId',
+    asyncHandler(async (req, res) => {
+        const {locationId} = req.params;
+
+        const deleteLocation = await Location.findByPk(locationId);
+        deleteLocation.destroy();
+        console.log('this --------', deleteLocation)
+        if (deleteLocation) {
+            res.json(deleteLocation)
+
+        }
+    })
+);
+router.put(
+    '/:locationId',
+    asyncHandler(async (req, res) => {
+        const {locationId} = req.params;
+        const location = req.body;
+
+        const updatedLocation = await Location.update(location, {where: {id: locationId}});
+
+
+        if (updatedLocation) {
+            res.json(updatedLocation)
+
+        }
     })
 );
 
