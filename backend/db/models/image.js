@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
       references: {
         model: 'Locations',
         key: 'id'
-      }
+      },
+      onDelete: 'CASCADE'
     },
     url: {
       type: DataTypes.STRING,
@@ -21,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Image.associate = function(models) {
     // associations can be defined here
-    Image.belongsTo(models.Location, { foreignKey: 'locationId', onDelete: 'cascade' });
+    Image.belongsTo(models.Location, { foreignKey: 'locationId'});
   };
   return Image;
 };

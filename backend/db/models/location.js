@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
       references: {
         model: 'Users',
         key: 'id'
-      }
+      },
+      onDelete: 'CASCADE'
 
     },
     address: {
@@ -46,9 +47,9 @@ module.exports = (sequelize, DataTypes) => {
   Location.associate = function(models) {
     // associations can be defined here
     // User.hasMany(models.Location, { foreignKey: 'userId' });
-    Location.hasMany(models.Image, { foreignKey: 'locationId', onDelete: 'cascade'  });
-    Location.hasMany(models.Review, { foreignKey: 'locationId', onDelete: 'cascade'  });
-    Location.belongsTo(models.User, { foreignKey: 'userId', onDelete: 'cascade'  });
+    Location.hasMany(models.Image, { foreignKey: 'locationId'  });
+    Location.hasMany(models.Review, { foreignKey: 'locationId' });
+    Location.belongsTo(models.User, { foreignKey: 'userId' });
   };
   return Location;
 };
