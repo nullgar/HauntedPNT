@@ -42,9 +42,11 @@ router.post(
         const data = req.body;
 
         const newLocation = await Location.create(data);
-        const newLocations = await Location.findAll({ include: "Images"});
-        if (newLocations) {
-            res.json(newLocations)
+
+
+        if (newLocation) {
+            const newLocations = await Location.findAll({ include: "Images"});
+            if (newLocations) res.json(newLocations)
 
         }
     })
@@ -70,8 +72,10 @@ router.delete(
         const {locationId} = req.params;
 
         const deleteLocation = await Location.findByPk(locationId);
-        deleteLocation.destroy();
-        console.log('this --------', deleteLocation)
+        if (deleteLocation) {
+            await Location.destroy({where: {id: locationId}});
+        }
+
         if (deleteLocation) {
             res.json(deleteLocation)
 

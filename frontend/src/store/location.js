@@ -2,18 +2,24 @@ import { csrfFetch } from "./csrf"
 
 const LOAD_LOCATIONS = 'location/LOAD_LOCATIONS';
 const CREATE_LOCATIONS = 'location/CREATE_LOCATIONS';
-const REMOVE_LOCATION = ''
+const REMOVE_LOCATION = 'location/REMOVE_LOCATION';
 
-const create = (locations) => {
+const create = (newLocations) => {
     return {
         type: CREATE_LOCATIONS,
-        locations
+        newLocations
     }
 }
 const load = (locations) => {
     return {
         type: LOAD_LOCATIONS,
         locations
+    }
+}
+const remove = (locationId) => {
+    return {
+        type: REMOVE_LOCATION,
+        locationId
     }
 }
 
@@ -35,8 +41,8 @@ export const createLocation = (location) => async (dispatch) => {
     });
 
     if (res.ok) {
-        const location = await res.json();
-        dispatch(create(location))
+        const locationsList = await res.json();
+        dispatch(create(locationsList))
     }
 
 }
@@ -55,16 +61,16 @@ export const test2 = (locationId, data) => async (dispatch) => {
     }
 
 }
-export const test3 = (locationId) => async (dispatch) => {
+export const removeLocation = (locationId) => async (dispatch) => {
     // console.log(locationId)
     const res = await csrfFetch(`/api/location/${locationId}`, {
         method: 'DELETE',
-
     });
 
     if (res.ok) {
-        const data = await res.json();
-        console.log('result ----', data);
+        const removedLocation = await res.json();
+        console.log(removedLocation.id)
+        dispatch(remove(removedLocation.id))
     }
 
 }
@@ -88,7 +94,7 @@ const locationReducer = (state = {}, action) => {
         case CREATE_LOCATIONS:
             const newLoadedLocations = {...state};
             const newImages = {};
-            action.locations.forEach(location => {
+            action.newLocations.forEach(location => {
                 newLoadedLocations[location.id] = location
 
                 newLoadedLocations[location.id].Images.forEach(image => {
@@ -101,6 +107,11 @@ const locationReducer = (state = {}, action) => {
             return newLoadedLocations;
             // const newLocations = {...state, [action.location.id]: {...action.location}};
             // return newLocations;
+        case REMOVE_LOCATION:
+            const removedLocations = {...state}
+            delete removedLocations[action.locationId]
+            console.log(removedLocations)
+            return removedLocations;
         default:
             return state;
     }

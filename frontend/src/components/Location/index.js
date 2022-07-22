@@ -1,17 +1,24 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
-import { loadLocations, test, test2, test3 } from '../../store/location';
+import { Link, useHistory, useParams } from 'react-router-dom';
+import { loadLocations, removeLocation, test, test2, test3 } from '../../store/location';
 
 const Location = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
+
     const {locationId} = useParams();
     const locations = useSelector(state => state.locations);
     const location = locations[locationId]
     useEffect(() => {
         dispatch(loadLocations())
     }, [dispatch])
+    const handleDelete = (locationId) => {
 
+
+        const res = dispatch(removeLocation(locationId));
+        if (res) history.push('/')
+    }
 
         if (location){
 
@@ -29,7 +36,7 @@ const Location = () => {
                 <p>{location.state}</p>
 
                 <p>{location.legend}</p>
-
+                <button onClick={() => handleDelete(location.id)}>Delete Location</button>
 
             </div>
 

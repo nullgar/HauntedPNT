@@ -1,16 +1,18 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { loadLocations, test, test2, test3 } from "../../store/location";
+import { loadLocations, test2, test3 } from "../../store/location";
 
 const Locations = () => {
     const dispatch = useDispatch();
+
     const allLocations = useSelector(state => state.locations)
 
 
     useEffect(() => {
         dispatch(loadLocations());
     }, [dispatch])
+
 
     if (allLocations) {
         return (
