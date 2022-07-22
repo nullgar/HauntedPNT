@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { loadLocations, test, test2, test3 } from '../../store/location';
 
 const Location = () => {
@@ -11,6 +11,7 @@ const Location = () => {
     useEffect(() => {
         dispatch(loadLocations())
     }, [dispatch])
+
 
         if (location){
 
@@ -28,6 +29,8 @@ const Location = () => {
                 <p>{location.state}</p>
 
                 <p>{location.legend}</p>
+
+
             </div>
 
             );

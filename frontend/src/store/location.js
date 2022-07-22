@@ -66,8 +66,6 @@ const locationReducer = (state = {}, action) => {
         case LOAD_LOCATIONS:
             const loadedLocations = {...state};
             const images = {};
-            const finalLocations = {...state}
-
             action.locations.forEach(location => {
                 loadedLocations[location.id] = location
 
@@ -78,8 +76,8 @@ const locationReducer = (state = {}, action) => {
                     }
                 })
             })
-
-            return loadedLocations;
+            const finalLocations = {...loadedLocations}
+            return finalLocations;
         default:
             return state;
     }
