@@ -9,7 +9,7 @@ router.get(
     asyncHandler(async (req, res) => {
 
 
-        const locations = await Location.findAll();
+        const locations = await Location.findAll({ include: "Images"});
 
         if (locations) {
             return res.json(

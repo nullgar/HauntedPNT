@@ -65,9 +65,20 @@ const locationReducer = (state = {}, action) => {
     switch (action.type) {
         case LOAD_LOCATIONS:
             const loadedLocations = {...state};
+            const images = {};
+            const finalLocations = {...state}
+
             action.locations.forEach(location => {
                 loadedLocations[location.id] = location
+
+                loadedLocations[location.id].Images.forEach(image => {
+                    images[image.id] = image
+                    if (location.id === image.locationId) {
+                        loadedLocations[location.id].Images = images
+                    }
+                })
             })
+
             return loadedLocations;
         default:
             return state;

@@ -1,16 +1,37 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { test, test2, test3 } from '../../store/location';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { loadLocations, test, test2, test3 } from '../../store/location';
 
 const Location = () => {
     const dispatch = useDispatch();
+    const {locationId} = useParams();
+    const locations = useSelector(state => state.locations);
+    const location = locations[locationId]
+    useEffect(() => {
+        dispatch(loadLocations())
+    }, [dispatch])
 
-    return (
-        <div>
+        if (location){
 
-        </div>
+            return (
+                <div>
+                <h1>
+                    {location.name}
+                </h1>
+                <p>{location.address}</p>
 
-  );
+                <p>{location.city}</p>
+
+                <p>{location.country}</p>
+
+                <p>{location.state}</p>
+
+                <p>{location.legend}</p>
+            </div>
+
+            );
+        }
 };
 
 export default Location;
