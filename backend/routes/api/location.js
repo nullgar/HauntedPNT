@@ -42,9 +42,9 @@ router.post(
         const data = req.body;
 
         const newLocation = await Location.create(data);
-
-        if (newLocation) {
-            res.json(newLocation)
+        const newLocations = await Location.findAll({ include: "Images"});
+        if (newLocations) {
+            res.json(newLocations)
 
         }
     })

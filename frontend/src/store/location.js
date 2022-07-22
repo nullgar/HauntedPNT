@@ -1,7 +1,15 @@
 import { csrfFetch } from "./csrf"
 
 const LOAD_LOCATIONS = 'location/LOAD_LOCATIONS';
+const CREATE_LOCATIONS = 'location/CREATE_LOCATIONS';
+const REMOVE_LOCATION = ''
 
+const create = (locations) => {
+    return {
+        type: CREATE_LOCATIONS,
+        locations
+    }
+}
 const load = (locations) => {
     return {
         type: LOAD_LOCATIONS,
@@ -18,7 +26,7 @@ export const loadLocations = (locations) => async dispatch => {
         return locations;
     }
 }
-export const test = (location) => async (dispatch) => {
+export const createLocation = (location) => async (dispatch) => {
     const res = await csrfFetch('/api/location/', {
         method: 'POST',
         body: JSON.stringify(
@@ -27,8 +35,8 @@ export const test = (location) => async (dispatch) => {
     });
 
     if (res.ok) {
-        const data = await res.json();
-        console.log(data);
+        const location = await res.json();
+        dispatch(create(location))
     }
 
 }
@@ -76,8 +84,23 @@ const locationReducer = (state = {}, action) => {
                     }
                 })
             })
-            const finalLocations = {...loadedLocations}
-            return finalLocations;
+            return loadedLocations;
+        case CREATE_LOCATIONS:
+            const newLoadedLocations = {...state};
+            const newImages = {};
+            action.locations.forEach(location => {
+                newLoadedLocations[location.id] = location
+
+                newLoadedLocations[location.id].Images.forEach(image => {
+                    newImages[image.id] = image
+                    if (location.id === image.locationId) {
+                        newLoadedLocations[location.id].Images = newImages
+                    }
+                })
+            })
+            return newLoadedLocations;
+            // const newLocations = {...state, [action.location.id]: {...action.location}};
+            // return newLocations;
         default:
             return state;
     }

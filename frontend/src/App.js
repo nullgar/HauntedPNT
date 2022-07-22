@@ -7,6 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Location from "./components/Location";
 import Locations from "./components/Locations";
+import LocationNew from "./components/LocationNew";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -23,6 +24,9 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <Locations />
+          </Route>
+          <Route exact path='/location/new'>
+            <LocationNew />
           </Route>
           <Route path='/location/:locationId'>
             <Location />

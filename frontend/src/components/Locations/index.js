@@ -11,39 +11,11 @@ const Locations = () => {
     useEffect(() => {
         dispatch(loadLocations());
     }, [dispatch])
-    const handleClick = () => {
-        const data = {
-            userId: 1,
-            address: '1234',
-            city: 'Thousand Palms',
-            state: 'CA',
-            country: 'Unites States',
-            name: 'Jon/s Scary Location',
-            legend: 'Boo!'
-           }
-        dispatch(test(data))
-    }
-    const handleClick2 = () => {
-        const locationId = 2;
-        const data = {
-            userId: 1,
-            address: 'Testing',
-            city: 'Thousand Palms',
-            state: 'CA',
-            country: 'Unites States',
-            name: 'Jon/s Scary Location',
-            legend: 'Boo!'
-           }
-        dispatch(test2(locationId, data))
-    }
-    const handleClick3 = () => {
-        const locationId = 5;
 
-        dispatch(test3(locationId))
-    }
     if (allLocations) {
         return (
             <div>
+                <button><Link to={'/location/new'}>Add a New Location</Link></button>
                 {Object.values(allLocations).map(location => (
                     <div key={location.id}>
                         <h1>
@@ -62,17 +34,7 @@ const Locations = () => {
 
                     </div>
                 ))}
-                 <div>
-            <button
-            onClick={() => handleClick()}
-            >Click to test Post</button>
-            <button
-            onClick={() => handleClick2()}
-            >Click to test Post Update</button>
-            <button
-            onClick={() => handleClick3()}
-            >Click to test Delete</button>
-            </div>
+
             </div>
         )
 
