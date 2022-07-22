@@ -6,6 +6,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Location from "./components/Location";
+import Locations from "./components/Locations";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -13,13 +14,19 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
+
   return (
     <>
-      <Location />
+
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-
+          <Route path='/'>
+            <Locations />
+          </Route>
+          <Route path='/location/:locationId'>
+            <Location />
+          </Route>
           <Route path="/login">
             <LoginFormPage />
           </Route>
