@@ -1,6 +1,46 @@
 import { csrfFetch } from "./csrf"
 
-export const test = (location) => async (dispatch) => {
+const LOAD_LOCATIONS = 'location/LOAD_LOCATIONS';
+const CREATE_LOCATIONS = 'location/CREATE_LOCATIONS';
+const UPDATE_LOCATIONS = 'location/UPDATE_LOCATIONS';
+const REMOVE_LOCATION = 'location/REMOVE_LOCATION';
+
+const create = (newLocations) => {
+    return {
+        type: CREATE_LOCATIONS,
+        newLocations
+    }
+}
+const update = (oldLocation, data) => {
+    return {
+        type: UPDATE_LOCATIONS,
+        oldLocation,
+        data
+    }
+}
+const load = (locations) => {
+    return {
+        type: LOAD_LOCATIONS,
+        locations
+    }
+}
+const remove = (locationId) => {
+    return {
+        type: REMOVE_LOCATION,
+        locationId
+    }
+}
+
+export const loadLocations = (locations) => async dispatch => {
+    const res = await csrfFetch(`/api/location`);
+
+    if (res.ok) {
+        const locations = await res.json();
+        dispatch(load(locations));
+        return locations;
+    }
+}
+export const createLocation = (location) => async (dispatch) => {
     const res = await csrfFetch('/api/location/', {
         method: 'POST',
         body: JSON.stringify(
@@ -9,13 +49,12 @@ export const test = (location) => async (dispatch) => {
     });
 
     if (res.ok) {
-        const data = await res.json();
-        console.log(data);
+        const locationsList = await res.json();
+        dispatch(create(locationsList))
     }
 
 }
-export const test2 = (locationId, data) => async (dispatch) => {
-    console.log(locationId, data)
+export const updateLocation = ({locationId, data}) => async (dispatch) => {
     const res = await csrfFetch(`/api/location/${locationId}`, {
         method: 'PUT',
         body: JSON.stringify(
@@ -24,21 +63,82 @@ export const test2 = (locationId, data) => async (dispatch) => {
     });
 
     if (res.ok) {
-        const data = await res.json();
-        console.log(data);
+        const oldLocation = await res.json();
+        dispatch(update(oldLocation, data))
     }
 
 }
-export const test3 = (locationId) => async (dispatch) => {
+export const removeLocation = (locationId) => async (dispatch) => {
     // console.log(locationId)
     const res = await csrfFetch(`/api/location/${locationId}`, {
         method: 'DELETE',
-
     });
 
     if (res.ok) {
-        const data = await res.json();
-        console.log('result ----', data);
+        const removedLocation = await res.json();
+        console.log(removedLocation.id)
+        dispatch(remove(removedLocation.id))
     }
 
 }
+
+const locationReducer = (state = {}, action) => {
+    switch (action.type) {
+        case LOAD_LOCATIONS:
+            const loadedLocations = {...state};
+            const images = {};
+            action.locations.forEach(location => {
+                loadedLocations[location.id] = location
+
+                loadedLocations[location.id].Images.forEach(image => {
+                    images[image.id] = image
+                    if (location.id === image.locationId) {
+                        loadedLocations[location.id].Images = images
+                    }
+                })
+            })
+            return loadedLocations;
+        case CREATE_LOCATIONS:
+            const newLoadedLocations = {...state};
+            const newImages = {};
+            action.newLocations.forEach(location => {
+                newLoadedLocations[location.id] = location
+
+                newLoadedLocations[location.id].Images.forEach(image => {
+                    newImages[image.id] = image
+                    if (location.id === image.locationId) {
+                        newLoadedLocations[location.id].Images = newImages
+                    }
+                })
+            })
+            return newLoadedLocations;
+        case REMOVE_LOCATION:
+            const removedLocations = {...state}
+            delete removedLocations[action.locationId]
+            console.log(removedLocations)
+            return removedLocations;
+        case UPDATE_LOCATIONS:
+
+            const locationList = {...state}
+            // console.log(action.updateLocation)
+            // console.log(locationList)
+
+            const updateImages = {...locationList[action.oldLocation.id].Images};
+            // locationList[action.oldLocation.id].Images.forEach(image => {
+            //     updateImages[image.id] = image
+            //     if (action.data.id === image.locationId) {
+            //         locationList[action.data.id].Images = updateImages
+            //     }
+            // })
+            locationList[action.oldLocation.id] = action.data
+            locationList[action.oldLocation.id].Images = updateImages
+
+            const finalLocations = {...locationList}
+            return finalLocations;
+        default:
+            return state;
+    }
+
+}
+
+export default locationReducer;

@@ -9,7 +9,7 @@ router.get(
     asyncHandler(async (req, res) => {
 
 
-        const locations = await Location.findAll();
+        const locations = await Location.findAll({ include: "Images"});
 
         if (locations) {
             return res.json(
@@ -43,23 +43,10 @@ router.post(
 
         const newLocation = await Location.create(data);
 
+
         if (newLocation) {
-            res.json(newLocation)
-
-        }
-    })
-);
-router.put(
-    '/:locationId',
-    asyncHandler(async (req, res) => {
-        const {locationId} = req.params;
-        const location = req.body;
-
-        const updatedLocation = await Location.update(location, {where: {id: locationId}});
-
-
-        if (updatedLocation) {
-            res.json(updatedLocation)
+            const newLocations = await Location.findAll({ include: "Images"});
+            if (newLocations) res.json(newLocations)
 
         }
     })
@@ -70,8 +57,10 @@ router.delete(
         const {locationId} = req.params;
 
         const deleteLocation = await Location.findByPk(locationId);
-        deleteLocation.destroy();
-        console.log('this --------', deleteLocation)
+        if (deleteLocation) {
+            await Location.destroy({where: {id: locationId}});
+        }
+
         if (deleteLocation) {
             res.json(deleteLocation)
 
@@ -84,8 +73,8 @@ router.put(
         const {locationId} = req.params;
         const location = req.body;
 
-        const updatedLocation = await Location.update(location, {where: {id: locationId}});
-
+        const updatedLocation = await Location.findByPk(locationId, { include: "Images"})
+        const id = await Location.update(location, {where: {id: locationId}});
 
         if (updatedLocation) {
             res.json(updatedLocation)
