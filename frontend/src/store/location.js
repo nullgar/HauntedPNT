@@ -2,12 +2,20 @@ import { csrfFetch } from "./csrf"
 
 const LOAD_LOCATIONS = 'location/LOAD_LOCATIONS';
 const CREATE_LOCATIONS = 'location/CREATE_LOCATIONS';
+const UPDATE_LOCATIONS = 'location/UPDATE_LOCATIONS';
 const REMOVE_LOCATION = 'location/REMOVE_LOCATION';
 
 const create = (newLocations) => {
     return {
         type: CREATE_LOCATIONS,
         newLocations
+    }
+}
+const update = (oldLocation, data) => {
+    return {
+        type: UPDATE_LOCATIONS,
+        oldLocation,
+        data
     }
 }
 const load = (locations) => {
@@ -46,8 +54,7 @@ export const createLocation = (location) => async (dispatch) => {
     }
 
 }
-export const test2 = (locationId, data) => async (dispatch) => {
-    console.log(locationId, data)
+export const updateLocation = ({locationId, data}) => async (dispatch) => {
     const res = await csrfFetch(`/api/location/${locationId}`, {
         method: 'PUT',
         body: JSON.stringify(
@@ -56,8 +63,8 @@ export const test2 = (locationId, data) => async (dispatch) => {
     });
 
     if (res.ok) {
-        const data = await res.json();
-        console.log(data);
+        const oldLocation = await res.json();
+        dispatch(update(oldLocation, data))
     }
 
 }
@@ -105,13 +112,29 @@ const locationReducer = (state = {}, action) => {
                 })
             })
             return newLoadedLocations;
-            // const newLocations = {...state, [action.location.id]: {...action.location}};
-            // return newLocations;
         case REMOVE_LOCATION:
             const removedLocations = {...state}
             delete removedLocations[action.locationId]
             console.log(removedLocations)
             return removedLocations;
+        case UPDATE_LOCATIONS:
+
+            const locationList = {...state}
+            // console.log(action.updateLocation)
+            // console.log(locationList)
+
+            const updateImages = {...locationList[action.oldLocation.id].Images};
+            // locationList[action.oldLocation.id].Images.forEach(image => {
+            //     updateImages[image.id] = image
+            //     if (action.data.id === image.locationId) {
+            //         locationList[action.data.id].Images = updateImages
+            //     }
+            // })
+            locationList[action.oldLocation.id] = action.data
+            locationList[action.oldLocation.id].Images = updateImages
+
+            const finalLocations = {...locationList}
+            return finalLocations;
         default:
             return state;
     }

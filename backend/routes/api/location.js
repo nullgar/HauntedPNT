@@ -51,21 +51,6 @@ router.post(
         }
     })
 );
-router.put(
-    '/:locationId',
-    asyncHandler(async (req, res) => {
-        const {locationId} = req.params;
-        const location = req.body;
-
-        const updatedLocation = await Location.update(location, {where: {id: locationId}});
-
-
-        if (updatedLocation) {
-            res.json(updatedLocation)
-
-        }
-    })
-);
 router.delete(
     '/:locationId',
     asyncHandler(async (req, res) => {
@@ -88,8 +73,8 @@ router.put(
         const {locationId} = req.params;
         const location = req.body;
 
-        const updatedLocation = await Location.update(location, {where: {id: locationId}});
-
+        const updatedLocation = await Location.findByPk(locationId, { include: "Images"})
+        const id = await Location.update(location, {where: {id: locationId}});
 
         if (updatedLocation) {
             res.json(updatedLocation)

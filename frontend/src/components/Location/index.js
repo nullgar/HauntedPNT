@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory, useParams } from 'react-router-dom';
-import { loadLocations, removeLocation, test, test2, test3 } from '../../store/location';
+import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
+import { loadLocations, removeLocation } from '../../store/location';
 
 const Location = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-
     const {locationId} = useParams();
+    const backup = useLocation();
+    const backupLocation = backup.pathname.split('/')[2];
     const locations = useSelector(state => state.locations);
+
     const location = locations[locationId]
+
     useEffect(() => {
         dispatch(loadLocations())
     }, [dispatch])
@@ -36,7 +39,13 @@ const Location = () => {
                 <p>{location.state}</p>
 
                 <p>{location.legend}</p>
+                <button>
+                    <Link to={`/location/${locationId}/edit`}>
+                        Edit Location
+                    </Link>
+                </button>
                 <button onClick={() => handleDelete(location.id)}>Delete Location</button>
+
 
             </div>
 
