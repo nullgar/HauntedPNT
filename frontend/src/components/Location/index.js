@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
 import { loadLocations, removeLocation } from '../../store/location';
+import LocationEdit from '../LocationEdit';
 
 const Location = () => {
     const dispatch = useDispatch();
@@ -17,10 +18,16 @@ const Location = () => {
         dispatch(loadLocations())
     }, [dispatch])
     const handleDelete = (locationId) => {
-
-
-        const res = dispatch(removeLocation(locationId));
-        if (res) history.push('/')
+        if (locationId || backupLocation) {
+            const res = dispatch(removeLocation(locationId || backupLocation));
+            if (res) history.push('/')
+        }
+    }
+    const formHide = () => {
+        const form = document.querySelector('#formHide');
+        const button = document.querySelector('#formHide-button');
+        form.setAttribute('style', '');
+        button.setAttribute('style', 'display: none')
     }
 
         if (location){
@@ -39,12 +46,13 @@ const Location = () => {
                 <p>{location.state}</p>
 
                 <p>{location.legend}</p>
-                <button>
-                    <Link to={`/location/${locationId}/edit`}>
-                        Edit Location
-                    </Link>
+                <button id='formHide-button' style={{display: ''}}  onClick={formHide}>
+                    Edit Location
                 </button>
-                <button onClick={() => handleDelete(location.id)}>Delete Location</button>
+                <div id='formHide' style={{display: 'none'}}>
+                    <LocationEdit />
+                </div>
+                <button onClick={() => handleDelete(location ? location.id : backupLocation)}>Delete Location</button>
 
 
             </div>

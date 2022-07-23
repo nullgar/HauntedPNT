@@ -8,7 +8,6 @@ const Locations = () => {
 
     const allLocations = useSelector(state => state.locations)
 
-
     useEffect(() => {
         dispatch(loadLocations());
     }, [dispatch])
@@ -19,7 +18,7 @@ const Locations = () => {
             <div>
                 <button><Link to={'/location/new'}>Add a New Location</Link></button>
                 {Object.values(allLocations).map(location => (
-                    <div key={location.id}>
+                    <div key={location.id + 7}>
                         <h1>
                             <Link to={`/location/${location.id}`}>
                             {location.name}

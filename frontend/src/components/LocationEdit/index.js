@@ -9,16 +9,7 @@ const LocationEdit = () => {
     const backupLocation = backup.pathname.split('/')[2];
     const location = useSelector(state => state.locations[locationId]);
 
-
-
-    // console.log(location)
-    // let location;
-    // locationId ? location = locations[locationId] : location = locations[backupLocation];
-    const [name, setName] = useState(() => {
-        const saved = localStorage.getItem("name");
-        const initialValue = JSON.parse(saved);
-        return initialValue || location.name;
-    })
+    const [name, setName] = useState(location ? location.name : '')
     const [address, setAddress] = useState(location ? location.address : '')
     const [city, setCity] = useState(location ? location.city : '')
     const [state, setState] = useState(location ? location.state : '')
@@ -27,15 +18,12 @@ const LocationEdit = () => {
     const dispatch = useDispatch();
     const history = useHistory()
 
-    const updateName = (e) => setName(e.target.value);
 
     useEffect(() => {
         dispatch(loadLocations())
     }, [dispatch])
 
-    useEffect(() => {
-        localStorage.setItem("name", JSON.stringify(name));
-    }, [name])
+
     const handleEdit = (e) => {
         e.preventDefault()
 
@@ -56,12 +44,12 @@ const LocationEdit = () => {
         }
 
     }
-    if (location) {
 
-        return (
-            <form onSubmit={handleEdit}>
+    return (
+        location ?
+        <form onSubmit={handleEdit}>
         <label htmlFor='name'>Name</label>
-        <input name='name' value={name} onChange={updateName}></input>
+        <input name='name' value={name} onChange={e => setName(e.target.value)}></input>
 
         <label htmlFor='address'>Address</label>
         <input name='address' value={address} onChange={(e) => setAddress(e.target.value)}></input>
@@ -79,8 +67,10 @@ const LocationEdit = () => {
         <textarea name='name' value={legend} onChange={(e) => setLegend(e.target.value)}></textarea>
         <button>Submit</button>
     </form>
+
+    : <h1>wait</h1>
+
     )
-    } else { return <h1>please wait</h1>}
 }
 
 export default LocationEdit;
