@@ -26,7 +26,13 @@ const ReviewCreate = () => {
             rating,
         }
 
-        dispatch(createReview(payload));
+        const res = dispatch(createReview(payload));
+
+        if (res) {
+            setReview('');
+            setRating(0)
+            resetStars()
+        }
         console.log(payload)
     };
 
@@ -54,11 +60,18 @@ const ReviewCreate = () => {
             }
         })
 
-
         const totalStars = [...document.getElementsByClassName(starActive)].length;
         setRating(totalStars)
     }
 
+    const resetStars = () => {
+        const starInactive = "rating__star far fa-star";
+        const ratingStars = [...document.getElementsByClassName('rating__star')];
+        ratingStars.forEach(star => {
+            star.setAttribute('class', `${starInactive}`)
+        })
+
+    }
 
 
 
