@@ -5,13 +5,17 @@ import { loadReviews } from "../../store/reviews";
 
 const ViewReviews = () => {
     const {locationId} = useParams()
-    const reviews = useSelector(state => state.reviews);
+    const allReviews = useSelector(state => state.reviews);
+    const reviews = Object.values(allReviews).filter(review => (
+        review.locationId === Number(locationId)
+    ));
+
+
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(loadReviews(locationId))
-    }, [dispatch])
-
+    }, [dispatch, locationId])
     return (
         <>
         <div>
@@ -20,6 +24,7 @@ const ViewReviews = () => {
                 <div key={review.id}>
                     <p>{review.User.username}</p>
                     <p>{review.review}</p>
+                    <p>{review.rating}/5</p>
                 </div>
             )) : <p>No Reviews</p>}
 

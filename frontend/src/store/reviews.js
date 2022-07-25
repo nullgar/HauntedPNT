@@ -18,7 +18,8 @@ const create = (review) => {
 
 export const loadReviews = (locationId) => async dispatch => {
 
-    const res = await csrfFetch(`/api/review/${locationId}`);
+    const res = await csrfFetch(`/api/review/${locationId}/`);
+
     if (res.ok) {
         const reviews = await res.json();
         dispatch(load(reviews));
@@ -54,8 +55,8 @@ const reviewsReducer = (state = {}, action) => {
             ));
             return allReviews;
         case CREATE_REVIEW:
-            const newReviews = {...state, ...[action.review]};
-            console.log(newReviews)
+            const newReviews = {...state};
+            newReviews[action.review.id] = action.review
             return newReviews
         default:
             return state;

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { createReview } from "../../store/reviews";
+
 import './ReviewCreate.css'
 const ReviewCreate = () => {
     const dispatch = useDispatch();
@@ -11,9 +12,9 @@ const ReviewCreate = () => {
     const [rating, setRating] = useState(0);
     let userId = 1;
 
-    useEffect(() => {
-        // dispatch(createReview())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(createReview())
+    // }, [dispatch])
 
     const handleReviewSubmit = (e) => {
         e.preventDefault();
@@ -25,6 +26,7 @@ const ReviewCreate = () => {
             rating,
         }
 
+        dispatch(createReview(payload));
         console.log(payload)
     };
 

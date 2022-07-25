@@ -8,8 +8,7 @@ const router = express.Router();
 router.get(
     '/:locationId',
     asyncHandler(async (req, res) => {
-        const {locationId} = req.params;
-        const reviews = await Review.findAll({where: {locationId}, include: 'User' });
+        const reviews = await Review.findAll({ include: 'User' });
 
         if (reviews) {
             return res.json(
@@ -23,9 +22,9 @@ router.post(
     '/:locationId/new',
     asyncHandler(async (req, res) => {
 
-        const {locationId} = req.params;
         const data = req.body
-        const review = await Review.create(data);
+        const result = await Review.create(data);
+        const review = await Review.findOne({where: {id: result.id}, include: 'User' });
 
         if (review) {
             return res.json(
