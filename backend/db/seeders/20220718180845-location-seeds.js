@@ -14,7 +14,7 @@ module.exports = {
     city: 'Lav Vegas',
     state: 'NV',
     country: 'Unites States',
-    name: 'Zac Bagans Museum',
+    name: 'Zak Bagans Museum',
     legend: 'Has a bunch of hauted stuff'
    }], {});
   },
