@@ -29,9 +29,6 @@ function App() {
           <Route exact path='/location/new'>
             <LocationNew />
           </Route>
-          {/* <Route path='/location/:locationId/edit'>
-            <LocationEdit />
-          </Route> */}
           <Route path='/location/:locationId'>
             <Location />
           </Route>

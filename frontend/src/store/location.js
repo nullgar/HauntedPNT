@@ -80,7 +80,6 @@ export const removeLocation = (locationId) => async (dispatch) => {
 
     if (res.ok) {
         const removedLocation = await res.json();
-        console.log(removedLocation.id)
         dispatch(remove(removedLocation.id))
     }
 
@@ -119,21 +118,10 @@ const locationReducer = (state = {}, action) => {
         case REMOVE_LOCATION:
             const removedLocations = {...state}
             delete removedLocations[action.locationId]
-            console.log(removedLocations)
             return removedLocations;
         case UPDATE_LOCATIONS:
-
             const locationList = {...state}
-            // console.log(action.updateLocation)
-            // console.log(locationList)
-
             const updateImages = {...locationList[action.oldLocation.id].Images};
-            // locationList[action.oldLocation.id].Images.forEach(image => {
-            //     updateImages[image.id] = image
-            //     if (action.data.id === image.locationId) {
-            //         locationList[action.data.id].Images = updateImages
-            //     }
-            // })
             locationList[action.oldLocation.id] = action.data
             locationList[action.oldLocation.id].Images = updateImages
 

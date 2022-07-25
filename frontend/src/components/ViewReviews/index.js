@@ -6,6 +6,7 @@ import { deleteReview, loadReviews } from "../../store/reviews";
 const ViewReviews = () => {
     const {locationId} = useParams()
     const allReviews = useSelector(state => state.reviews);
+    const user = useSelector(state => state.session.user);
     const reviews = Object.values(allReviews).filter(review => (
         review.locationId === Number(locationId)
     ));
@@ -31,7 +32,7 @@ const ViewReviews = () => {
                     <p>{review.User.username}</p>
                     <p>{review.review}</p>
                     <p>{review.rating}/5</p>
-                    <button onClick={() => handledeleteReview(review.id)}>Delete Review</button>
+                    {user && user.id === review.userId ? <button onClick={() => handledeleteReview(review.id)}>Delete Review</button> : null}
                 </div>
             )) : <p>No Reviews</p>}
 
