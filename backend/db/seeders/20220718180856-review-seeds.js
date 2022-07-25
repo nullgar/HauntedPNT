@@ -13,6 +13,12 @@ module.exports = {
     userId: 2,
     review: "Grape",
     rating: 5,
+   },
+   {
+    locationId: 1,
+    userId: 1,
+    review: "Scary my guy",
+    rating: 5,
    }], {});
   },
 

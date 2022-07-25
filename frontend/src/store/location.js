@@ -41,8 +41,12 @@ export const loadLocations = (locations) => async dispatch => {
     }
 }
 export const createLocation = (location) => async (dispatch) => {
+
     const res = await csrfFetch('/api/location/', {
         method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify(
             location
         )
