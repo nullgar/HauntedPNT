@@ -19,6 +19,22 @@ router.get(
 
     })
 );
+router.post(
+    '/:locationId/new',
+    asyncHandler(async (req, res) => {
+
+        const {locationId} = req.params;
+        const data = req.body
+        const review = await Review.create(data);
+
+        if (review) {
+            return res.json(
+                review
+            );
+        }
+
+    })
+);
 
 
 module.exports = router;

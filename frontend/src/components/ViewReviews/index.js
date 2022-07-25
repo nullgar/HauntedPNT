@@ -22,7 +22,7 @@ const ViewReviews = () => {
                     <p>{review.User.username}</p>
                     <p>{review.review}</p>
                 </div>
-            )) : null}
+            )) : <p>No Reviews</p>}
 
 
         </div>
