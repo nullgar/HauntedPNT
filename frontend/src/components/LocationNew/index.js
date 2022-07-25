@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createLocation, test2, test3 } from "../../store/location";
 
@@ -12,7 +12,7 @@ const LocationNew = () => {
     const [legend, setLegend] = useState('')
     const dispatch = useDispatch();
     const history = useHistory()
-
+    const user = useSelector(state => state.session.user);
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -28,32 +28,18 @@ const LocationNew = () => {
         }
 
         const res = dispatch(createLocation(data))
-        console.log(res);
 
         if (res) {
             return history.push('/')
         }
 
     }
-    // const handleClick2 = () => {
-    //     const locationId = 2;
-    //     const data = {
-    //         userId: 1,
-    //         address: 'Testing',
-    //         city: 'Thousand Palms',
-    //         state: 'CA',
-    //         country: 'Unites States',
-    //         name: 'Jon/s Scary Location',
-    //         legend: 'Boo!'
-    //        }
-    //     dispatch(test2(locationId, data))
-    // }
-    // const handleClick3 = () => {
-    //     const locationId = 5;
 
-    //     dispatch(test3(locationId))
-    // }
+
+
     return (
+        <>
+        {user ?
         <form onSubmit={handleSubmit}>
             <label htmlFor='name'>Name</label>
             <input name='name' value={name} onChange={(e) => setName(e.target.value)}></input>
@@ -74,6 +60,8 @@ const LocationNew = () => {
             <textarea name='name' value={legend} onChange={(e) => setLegend(e.target.value)}></textarea>
             <button>Submit</button>
         </form>
+        : <h3>You must be logged in to create a location!</h3>}
+    </>
     )
 }
 

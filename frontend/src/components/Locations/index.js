@@ -5,18 +5,19 @@ import { loadLocations, test2, test3 } from "../../store/location";
 
 const Locations = () => {
     const dispatch = useDispatch();
-
-    const allLocations = useSelector(state => state.locations)
+    const allLocations = useSelector(state => state.locations);
+    const user = useSelector(state => state.session.user);
 
     useEffect(() => {
         dispatch(loadLocations());
+
     }, [dispatch])
 
 
     if (allLocations) {
         return (
             <div>
-                <button><Link to={'/location/new'}>Add a New Location</Link></button>
+                {user ? <button><Link to={'/location/new'}>Add a New Location</Link></button> : null}
                 {Object.values(allLocations).map(location => (
                     <div key={location.id + 7}>
                         <h1>
