@@ -2,6 +2,8 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_REVIEWS = 'reviews/LOAD_REVIEWS';
 const CREATE_REVIEW = 'reviews/CREATE_REVIEW';
+const DELETE_REVIEW = 'reviews/DELETE_REVIEW';
+
 
 const load = (reviews) => {
     return {
@@ -15,10 +17,16 @@ const create = (review) => {
         review
     }
 }
+const remove = (reviewId) => {
+    return {
+        type: DELETE_REVIEW,
+        reviewId
+    }
+}
 
-export const loadReviews = (locationId) => async dispatch => {
+export const loadReviews = () => async dispatch => {
 
-    const res = await csrfFetch(`/api/review/${locationId}/`);
+    const res = await csrfFetch(`/api/review/`);
 
     if (res.ok) {
         const reviews = await res.json();
@@ -29,7 +37,7 @@ export const loadReviews = (locationId) => async dispatch => {
 
 export const createReview = (review, locationId) => async dispatch => {
 
-    const res = await csrfFetch(`/api/review/${locationId}/new/`, {
+    const res = await csrfFetch(`/api/review/new/`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
@@ -41,6 +49,18 @@ export const createReview = (review, locationId) => async dispatch => {
     if (res.ok) {
         const review = await res.json();
         dispatch(create(review));
+        return review;
+    }
+};
+
+export const deleteReview = (reviewId) => async dispatch => {
+
+    const res = await csrfFetch(`/api/review/${reviewId}/`, {
+        method: 'DELETE'
+    });
+    if (res.ok) {
+        const review = await res.json();
+        dispatch(remove(review.id));
         return review;
     }
 };
@@ -58,6 +78,12 @@ const reviewsReducer = (state = {}, action) => {
             const newReviews = {...state};
             newReviews[action.review.id] = action.review
             return newReviews
+        case DELETE_REVIEW:
+            const finalReviews = {...state};
+            console.log(finalReviews)
+            delete finalReviews[action.reviewId];
+            console.log(finalReviews)
+            return finalReviews
         default:
             return state;
     }

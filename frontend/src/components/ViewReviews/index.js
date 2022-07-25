@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { loadReviews } from "../../store/reviews";
+import { deleteReview, loadReviews } from "../../store/reviews";
 
 const ViewReviews = () => {
     const {locationId} = useParams()
@@ -16,6 +16,12 @@ const ViewReviews = () => {
     useEffect(() => {
         dispatch(loadReviews(locationId))
     }, [dispatch, locationId])
+
+
+    const handledeleteReview = (reviewId) => {
+
+        dispatch(deleteReview(reviewId))
+    }
     return (
         <>
         <div>
@@ -25,6 +31,7 @@ const ViewReviews = () => {
                     <p>{review.User.username}</p>
                     <p>{review.review}</p>
                     <p>{review.rating}/5</p>
+                    <button onClick={() => handledeleteReview(review.id)}>Delete Review</button>
                 </div>
             )) : <p>No Reviews</p>}
 

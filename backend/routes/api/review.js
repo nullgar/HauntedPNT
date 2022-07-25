@@ -6,7 +6,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
 
 router.get(
-    '/:locationId',
+    '/',
     asyncHandler(async (req, res) => {
         const reviews = await Review.findAll({ include: 'User' });
 
@@ -19,7 +19,7 @@ router.get(
     })
 );
 router.post(
-    '/:locationId/new',
+    '/new',
     asyncHandler(async (req, res) => {
 
         const data = req.body
@@ -29,6 +29,21 @@ router.post(
         if (review) {
             return res.json(
                 review
+            );
+        }
+
+    })
+);
+router.delete(
+    '/:reviewId',
+    asyncHandler(async (req, res) => {
+
+        const {reviewId} = req.params
+        const result = await Review.findByPk(reviewId);
+        if (result) {
+            result.destroy();
+            return res.json(
+                result
             );
         }
 

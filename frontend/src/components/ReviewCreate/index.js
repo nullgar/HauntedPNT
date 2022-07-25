@@ -7,14 +7,10 @@ import './ReviewCreate.css'
 const ReviewCreate = () => {
     const dispatch = useDispatch();
     const {locationId} = useParams();
-    // const newReview = useSelector(state => state.review[locationId])
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(0);
     let userId = 1;
 
-    // useEffect(() => {
-    //     dispatch(createReview())
-    // }, [dispatch])
 
     const handleReviewSubmit = (e) => {
         e.preventDefault();
