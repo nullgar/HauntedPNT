@@ -18,7 +18,7 @@ const LocationNew = () => {
         e.preventDefault()
 
         const data = {
-            userId: 1,
+            userId: user.id,
             name: name,
             address: address,
             city: city,
@@ -67,16 +67,3 @@ const LocationNew = () => {
 
 
 export default LocationNew;
-
-
-{/* <div>
-        <button
-        onClick={() => handleClick()}
-        >Click to test Post</button>
-        <button
-        onClick={() => handleClick2()}
-        >Click to test Post Update</button>
-        <button
-        onClick={() => handleClick3()}
-        >Click to test Delete</button>
-</div> */}

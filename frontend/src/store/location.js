@@ -80,7 +80,6 @@ export const removeLocation = (locationId) => async (dispatch) => {
 
     if (res.ok) {
         const removedLocation = await res.json();
-        console.log(removedLocation.id)
         dispatch(remove(removedLocation.id))
     }
 

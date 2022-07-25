@@ -9,7 +9,8 @@ const ReviewCreate = () => {
     const {locationId} = useParams();
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(0);
-    let userId = 1;
+    const user = useSelector(state => state.session.user);
+
 
 
     const handleReviewSubmit = (e) => {
@@ -17,7 +18,7 @@ const ReviewCreate = () => {
 
         const payload = {
             locationId,
-            userId,
+            userId: user.id,
             review,
             rating,
         }

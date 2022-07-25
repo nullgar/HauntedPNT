@@ -13,7 +13,7 @@ const Location = () => {
     const backup = useLocation();
     const backupLocation = backup.pathname.split('/')[2];
     const locations = useSelector(state => state.locations);
-
+    const user = useSelector(state => state.session.user);
     const location = locations[locationId]
 
     useEffect(() => {
@@ -54,9 +54,9 @@ const Location = () => {
                 <div id='formHide' style={{display: 'none'}}>
                     <LocationEdit />
                 </div>
-                <button onClick={() => handleDelete(location ? location.id : backupLocation)}>Delete Location</button>
+                {user && user.id === location.userId ? <button onClick={() => handleDelete(location ? location.id : backupLocation)}>Delete Location</button> : null}
 
-                <ReviewCreate />
+                {user ? <ReviewCreate /> : null}
                 <ViewReviews />
 
             </div>
