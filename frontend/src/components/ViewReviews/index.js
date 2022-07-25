@@ -11,7 +11,6 @@ const ViewReviews = () => {
     useEffect(() => {
         dispatch(loadReviews(locationId))
     }, [dispatch])
-    console.log(Object.values(reviews))
 
     return (
         <>

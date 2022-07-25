@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
 import { loadLocations, removeLocation } from '../../store/location';
 import LocationEdit from '../LocationEdit';
+import ReviewCreate from '../ReviewCreate';
 import ViewReviews from '../ViewReviews';
 
 const Location = () => {
@@ -55,6 +56,7 @@ const Location = () => {
                 </div>
                 <button onClick={() => handleDelete(location ? location.id : backupLocation)}>Delete Location</button>
 
+                <ReviewCreate />
                 <ViewReviews />
 
             </div>
