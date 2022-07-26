@@ -5,7 +5,13 @@ const { Image } = require('../../db/models');
 const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
 
-
+router.get(
+    '/',
+    asyncHandler( async (req, res) => {
+        const allImages = await Image.findAll();
+        if (allImages) res.json(allImages);
+    })
+)
 router.post(
     '/',
     asyncHandler(async (req, res) => {
@@ -15,8 +21,8 @@ router.post(
 
 
         if (newImage) {
-            const newImages = await Image.findAll();
-            if (newImages) res.json(newImages);
+            // const newImages = await Image.findAll();
+            res.json(newImage);
 
         }
     })

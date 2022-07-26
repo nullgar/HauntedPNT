@@ -48,7 +48,7 @@ router.post(
 
         if (newLocation) {
             const newLocations = await Location.findAll();
-            if (newLocations) res.json(newLocations)
+            if (newLocations) res.json({newLocations, newLocation})
 
         }
     })

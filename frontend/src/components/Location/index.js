@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
+import { loadImages } from '../../store/image';
 import { loadLocations, removeLocation } from '../../store/location';
 import LocationEdit from '../LocationEdit';
 import ReviewCreate from '../ReviewCreate';
@@ -14,12 +15,15 @@ const Location = () => {
     const backupLocation = backup.pathname.split('/')[2];
     const locations = useSelector(state => state.locations);
     const user = useSelector(state => state.session.user);
-    const location = locations[locationId]
+    const location = locations[locationId];
+    const allImages = useSelector(state => state.images);
+    const locationImages = Object.values(allImages).filter(image => image.locationId === Number(locationId));
 
     useEffect(() => {
-        dispatch(loadLocations())
+        dispatch(loadLocations());
+        dispatch(loadImages());
     }, [dispatch]);
-    console.log(location)
+    console.log(locationImages)
     const handleDelete = (locationId) => {
         if (locationId || backupLocation) {
             const res = dispatch(removeLocation(locationId || backupLocation));
@@ -35,13 +39,17 @@ const Location = () => {
 
     }
 
-        if (location){
+        if (location && locationImages){
 
             return (
                 <div>
                 <h1>
                     {location.name}
                 </h1>
+                {Object.values(locationImages).map(image => (
+
+                    <img src={image.url} key={image.id} />
+                ))}
                 <p>{location.address}</p>
 
                 <p>{location.city}</p>
@@ -51,12 +59,17 @@ const Location = () => {
                 <p>{location.state}</p>
 
                 <p>{location.legend}</p>
-                <button id='formHide-button' style={{display: ''}}  onClick={formHide}>
+                {user && user.id === location.userId ?
+                <>
+                <button id='formHide-button' onClick={formHide}>
                     Edit Location
                 </button>
-                <div id='formHide' style={{display: 'none'}}>
-                    <LocationEdit />
+                <div id='formHide' style={{'display': 'none'}}>
+                <LocationEdit />
                 </div>
+                </>
+                : null
+                }
                 {user && user.id === location.userId ? <button onClick={() => handleDelete(location ? location.id : backupLocation)}>Delete Location</button> : null}
 
                 {user ? <ReviewCreate /> : null}

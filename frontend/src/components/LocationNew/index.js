@@ -30,11 +30,11 @@ const LocationNew = () => {
             legend: legend
         }
 
-        const res = await dispatch(createLocation(data))
+        const res = await dispatch(createLocation(data));
         // console.log(res)
-        // const resImage = dispatch(createImage({url: image, locationId: res.id}))
+        const resImage = dispatch(createImage({url: image, locationId: res.id}));
 
-        if (res) {
+        if (res, resImage) {
             return history.push('/')
         }
 
@@ -64,8 +64,8 @@ const LocationNew = () => {
             <label htmlFor="legend">Legend</label>
             <textarea name='legend' value={legend} onChange={(e) => setLegend(e.target.value)}></textarea>
 
-            {/* <label htmlFor="image">Image</label>
-            <input name='image' value={image} onChange={(e) => setImage(e.target.value)}></input> */}
+            <label htmlFor="image">Image</label>
+            <input name='image' value={image} onChange={(e) => setImage(e.target.value)}></input>
 
             <button>Submit</button>
         </form>

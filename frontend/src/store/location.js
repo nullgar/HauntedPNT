@@ -37,7 +37,6 @@ export const loadLocations = () => async dispatch => {
     // console.log(locationId)
     if (res.ok) {
         const locations = await res.json();
-        console.log('this-------------', locations)
         dispatch(load(locations));
         return locations;
     }
@@ -55,9 +54,9 @@ export const createLocation = (location) => async (dispatch) => {
     });
 
     if (res.ok) {
-        const newLocations = await res.json();
+        const {newLocations, newLocation} = await res.json();
         dispatch(create(newLocations))
-        return newLocations;
+        return newLocation;
     }
 
 }
