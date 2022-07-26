@@ -18,7 +18,8 @@ const Location = () => {
 
     useEffect(() => {
         dispatch(loadLocations())
-    }, [dispatch])
+    }, [dispatch]);
+    console.log(location)
     const handleDelete = (locationId) => {
         if (locationId || backupLocation) {
             const res = dispatch(removeLocation(locationId || backupLocation));
@@ -28,20 +29,19 @@ const Location = () => {
     const formHide = () => {
         const form = document.querySelector('#formHide');
         const button = document.querySelector('#formHide-button');
-        form.setAttribute('style', '');
-        button.setAttribute('style', 'display: none')
+        // form.setAttribute('style', '');
+        button.innerHTML === 'Edit Location' ? button.innerHTML = 'Cancel Edit' : button.innerHTML = 'Edit Location';
+        button.innerHTML === 'Edit Location' ? form.setAttribute('style', 'display: none') : form.setAttribute('style', ''); ;
+
     }
 
-        if (location && location.Images){
+        if (location){
 
             return (
                 <div>
                 <h1>
                     {location.name}
                 </h1>
-                {Object.values(location.Images).map(image => (
-                    <img src={image.url}/>
-                ))}
                 <p>{location.address}</p>
 
                 <p>{location.city}</p>

@@ -8,9 +8,12 @@ router.get(
     '/',
     asyncHandler(async (req, res) => {
 
+        const data = req.body
+        // console.log('this---------------', data)
+        // const id = Number(locationId)
+        const locations = await Location.findAll();
 
-        const locations = await Location.findAll({ include: "Images"});
-
+        // console.log(locations)
         if (locations) {
             return res.json(
                 locations
@@ -43,9 +46,8 @@ router.post(
 
         const newLocation = await Location.create(data);
 
-
         if (newLocation) {
-            const newLocations = await Location.findAll({ include: "Images"});
+            const newLocations = await Location.findAll();
             if (newLocations) res.json(newLocations)
 
         }

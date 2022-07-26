@@ -31,11 +31,13 @@ const remove = (locationId) => {
     }
 }
 
-export const loadLocations = (locations) => async dispatch => {
-    const res = await csrfFetch(`/api/location`);
+export const loadLocations = () => async dispatch => {
 
+    const res = await csrfFetch(`/api/location/`);
+    // console.log(locationId)
     if (res.ok) {
         const locations = await res.json();
+        console.log('this-------------', locations)
         dispatch(load(locations));
         return locations;
     }
@@ -53,8 +55,9 @@ export const createLocation = (location) => async (dispatch) => {
     });
 
     if (res.ok) {
-        const locationsList = await res.json();
-        dispatch(create(locationsList))
+        const newLocations = await res.json();
+        dispatch(create(newLocations))
+        return newLocations;
     }
 
 }
@@ -89,31 +92,34 @@ const locationReducer = (state = {}, action) => {
     switch (action.type) {
         case LOAD_LOCATIONS:
             const loadedLocations = {...state};
-            const images = {};
-            action.locations.forEach(location => {
+            // const images = {};
+            Object.values(action.locations).forEach(location => {
                 loadedLocations[location.id] = location
+                // console.log(loadedLocations[location.id].Images)
+                // Object.values(loadedLocations[location.id].Images).forEach(image => {
+                    // images[image.id] = image
 
-                loadedLocations[location.id].Images.forEach(image => {
-                    images[image.id] = image
-                    if (location.id === image.locationId) {
-                        loadedLocations[location.id].Images = images
-                    }
-                })
+                    // if (action.location.id === image.locationId) {
+
+                        // loadedLocations[location.id].Images = images
+                    // }
+                // })
             })
             return loadedLocations;
+
         case CREATE_LOCATIONS:
             const newLoadedLocations = {...state};
-            const newImages = {};
+            // const newImages = {};
             action.newLocations.forEach(location => {
                 newLoadedLocations[location.id] = location
-
-                newLoadedLocations[location.id].Images.forEach(image => {
-                    newImages[image.id] = image
-                    if (location.id === image.locationId) {
-                        newLoadedLocations[location.id].Images = newImages
-                    }
-                })
-            })
+                // newLoadedLocations[location.id].Images.forEach(image => {
+                //     newImages[image.id] = image
+                //     if (location.id === image.locationId) {
+                //         newLoadedLocations[location.id].Images = newImages
+                //     }
+                // })
+            });
+            console.log(newLoadedLocations)
             return newLoadedLocations;
         case REMOVE_LOCATION:
             const removedLocations = {...state}

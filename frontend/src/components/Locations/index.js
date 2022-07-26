@@ -10,9 +10,8 @@ const Locations = () => {
 
     useEffect(() => {
         dispatch(loadLocations());
-
     }, [dispatch])
-
+    console.log(allLocations)
 
     if (allLocations) {
         return (
@@ -25,10 +24,9 @@ const Locations = () => {
                             {location.name}
                             </Link>
                         </h1>
-                        <Link to={`/location/${location.id}`}>
-                            {location.Images['1'] !== undefined ? <img src={location.Images['1'].url} /> : <img src={'https://downtownls.org/wp-content/uploads/coming-soon-450x315.jpg'} />}
+                        {/* <Link to={`/location/${location.id}`}>
 
-                        </Link>
+                        </Link> */}
                         <p>{location.city}</p>
                         <p>{location.state}</p>
                         <p>{location.country}</p>
