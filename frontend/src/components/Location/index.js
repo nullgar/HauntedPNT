@@ -24,7 +24,6 @@ const Location = () => {
         dispatch(loadLocations());
         dispatch(loadImages());
     }, [dispatch]);
-    console.log(locationImages)
     const handleDelete = (locationId) => {
         if (locationId || backupLocation) {
             const res = dispatch(removeLocation(locationId || backupLocation));
@@ -32,7 +31,6 @@ const Location = () => {
         }
     }
     const formHide = () => {
-        console.log('this fire off')
         const form = document.querySelector('#formHide');
         const button = document.querySelector('#formHide-button');
         // form.setAttribute('style', '');

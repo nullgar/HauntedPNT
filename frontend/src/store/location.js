@@ -70,7 +70,8 @@ export const updateLocation = ({locationId, data}) => async (dispatch) => {
 
     if (res.ok) {
         const oldLocation = await res.json();
-        dispatch(update(oldLocation, data))
+        dispatch(update(oldLocation, data));
+        return oldLocation;
     }
 
 }

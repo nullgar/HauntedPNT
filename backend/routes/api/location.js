@@ -32,7 +32,7 @@ const validateLocation = [
     check('country')
         .exists()
         .withMessage('Please provide the locations Country.')
-        .isLength({ min: 5, max: 50 })
+        .isLength({ min: 3, max: 50 })
         .withMessage('Country needs to be between 5 - 50 characters.'),
 
     handleValidationErrors
