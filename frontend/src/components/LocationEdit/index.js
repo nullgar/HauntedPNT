@@ -37,10 +37,19 @@ const LocationEdit = () => {
             legend: legend
         }
 
+        const formHide = () => {
+            const form = document.querySelector('#formHide');
+            const button = document.querySelector('#formHide-button');
+            // form.setAttribute('style', '');
+            button.innerHTML === 'Edit Location' ? button.innerHTML = 'Cancel Edit' : button.innerHTML = 'Edit Location';
+            button.innerHTML === 'Edit Location' ? form.setAttribute('style', 'display: none') : form.setAttribute('style', ''); ;
+
+        }
         const res = dispatch(updateLocation({locationId, data}))
 
         if (res) {
-            return history.push(`/location/${locationId}`)
+            formHide();
+
         }
 
     }
