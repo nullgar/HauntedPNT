@@ -9,6 +9,7 @@ const ReviewCreate = () => {
     const {locationId} = useParams();
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(0);
+    const [valErrors, setValErrors] = useState([])
     const user = useSelector(state => state.session.user);
 
 
@@ -23,9 +24,13 @@ const ReviewCreate = () => {
             rating,
         }
 
-        const res = dispatch(createReview(payload));
-
+        const res = dispatch(createReview(payload))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setValErrors(data.errors)
+        });
         if (res) {
+            setValErrors([])
             setReview('');
             setRating(0)
             resetStars()
@@ -77,8 +82,12 @@ const ReviewCreate = () => {
 
     return (
         <div>
+            <ul>
+                {valErrors.map(err => (
+                    <li key={err}>{err}</li>
+                ))}
+            </ul>
             <form>
-
                 <label htmlFor="review">Please Enter a Review: </label>
                 <textarea name='review' value={review} onChange={e => setReview(e.target.value)}></textarea>
 
