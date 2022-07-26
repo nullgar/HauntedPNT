@@ -4,6 +4,7 @@ import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
 import { loadImages } from '../../store/image';
 import { loadLocations, removeLocation } from '../../store/location';
 import LocationEdit from '../LocationEdit';
+import LocationImage from '../LocationImage';
 import ReviewCreate from '../ReviewCreate';
 import ViewReviews from '../ViewReviews';
 
@@ -31,6 +32,7 @@ const Location = () => {
         }
     }
     const formHide = () => {
+        console.log('this fire off')
         const form = document.querySelector('#formHide');
         const button = document.querySelector('#formHide-button');
         // form.setAttribute('style', '');
@@ -50,6 +52,7 @@ const Location = () => {
 
                     <img src={image.url} key={image.id} />
                 ))}
+                {!locationImages.length ? <LocationImage /> : null}
                 <p>{location.address}</p>
 
                 <p>{location.city}</p>

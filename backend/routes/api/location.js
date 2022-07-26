@@ -1,9 +1,44 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { Location } = require('../../db/models');
+const { check } = require('express-validator');
 
 const { handleValidationErrors } = require('../../utils/validation');
+
 const router = express.Router();
+
+
+const validateLocation = [
+    check('name')
+        .exists()
+        .withMessage('Name cannot be empty.')
+        .isLength({ min: 3, max: 100 })
+        .withMessage('Name needs to be between 3 - 100 characters.'),
+    check('address')
+        .exists()
+        .withMessage('Address cannot be empty.')
+        .isLength({ min: 5, max: 50 })
+        .withMessage('Address needs to be between 5 - 50 characters.'),
+    check('legend')
+        .exists()
+        .withMessage('Legend cannot be empty!.')
+        .isLength({ min: 5, max: 300 })
+        .withMessage('Legends need to be between 5 - 300 characters!'),
+    check('city')
+        .exists()
+        .withMessage('Please provide the locations City.')
+        .isLength({ min: 3, max: 50 })
+        .withMessage('City needs to be between 3 - 50 characters.'),
+    check('country')
+        .exists()
+        .withMessage('Please provide the locations Country.')
+        .isLength({ min: 5, max: 50 })
+        .withMessage('Country needs to be between 5 - 50 characters.'),
+
+    handleValidationErrors
+];
+
+
 router.get(
     '/',
     asyncHandler(async (req, res) => {
@@ -41,6 +76,7 @@ router.get(
 
 router.post(
     '/',
+    validateLocation,
     asyncHandler(async (req, res) => {
         const data = req.body;
 
@@ -71,6 +107,7 @@ router.delete(
 );
 router.put(
     '/:locationId',
+    validateLocation,
     asyncHandler(async (req, res) => {
         const {locationId} = req.params;
         const location = req.body;

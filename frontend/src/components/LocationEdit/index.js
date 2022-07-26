@@ -15,6 +15,7 @@ const LocationEdit = () => {
     const [state, setState] = useState(location ? location.state : '')
     const [country, setCountry] = useState(location ? location.country : '')
     const [legend, setLegend] = useState(location ? location.legend : '')
+    const [valErrors, setValErrors] = useState([])
     const dispatch = useDispatch();
     const history = useHistory()
 
@@ -46,39 +47,49 @@ const LocationEdit = () => {
 
         }
         const res = dispatch(updateLocation({locationId, data}))
+        .catch(async (res) => {
+            const data = await res.json();
+            if (data && data.errors) setValErrors(data.errors);
+        });
 
-        if (res) {
+        if (res && !valErrors.length) {
             formHide();
-
+            setValErrors([])
         }
 
     }
 
     return (
-        location ?
+        <div>
+            <ul>
+                {valErrors.map(err => (
+                    <li key={err}>{err}</li>
+                ))}
+            </ul>
+        {location ?
         <form onSubmit={handleEdit}>
         <label htmlFor='name'>Name</label>
-        <input name='name' value={name} onChange={e => setName(e.target.value)}></input>
+        <input name='name' value={name} onChange={e => setName(e.target.value)} required ></input>
 
         <label htmlFor='address'>Address</label>
-        <input name='address' value={address} onChange={(e) => setAddress(e.target.value)}></input>
+        <input name='address' value={address} onChange={(e) => setAddress(e.target.value)} required ></input>
 
         <label>City</label>
-        <input name='name' value={city} onChange={(e) => setCity(e.target.value)}></input>
+        <input name='name' value={city} onChange={(e) => setCity(e.target.value)} required ></input>
 
         <label>State</label>
-        <input name='name' value={state} onChange={(e) => setState(e.target.value)}></input>
+        <input name='name' value={state} onChange={(e) => setState(e.target.value)} required ></input>
 
         <label>Country</label>
-        <input name='name' value={country} onChange={(e) => setCountry(e.target.value)}></input>
+        <input name='name' value={country} onChange={(e) => setCountry(e.target.value)} required ></input>
 
         <label>Legend</label>
-        <textarea name='name' value={legend} onChange={(e) => setLegend(e.target.value)}></textarea>
+        <textarea name='name' value={legend} onChange={(e) => setLegend(e.target.value)} required ></textarea>
         <button>Submit</button>
-    </form>
+        </form>
 
-    : <h1>wait</h1>
-
+    : <h1>wait</h1>}
+    </div>
     )
 }
 
