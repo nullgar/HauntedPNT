@@ -25,7 +25,7 @@ const LocationEdit = () => {
     }, [dispatch])
 
 
-    const handleEdit = (e) => {
+    const handleEdit = async (e) => {
         e.preventDefault()
 
         const data = {
@@ -39,23 +39,29 @@ const LocationEdit = () => {
         }
 
         const formHide = () => {
-            const form = document.querySelector('#formHide');
-            const button = document.querySelector('#formHide-button');
-            // form.setAttribute('style', '');
-            button.innerHTML === 'Edit Location' ? button.innerHTML = 'Cancel Edit' : button.innerHTML = 'Edit Location';
-            button.innerHTML === 'Edit Location' ? form.setAttribute('style', 'display: none') : form.setAttribute('style', ''); ;
+
+                const form = document.querySelector('#formHide');
+                const button = document.querySelector('#formHide-button');
+                // form.setAttribute('style', '');
+                button.innerHTML === 'Edit Location' ? button.innerHTML = 'Cancel Edit' : button.innerHTML = 'Edit Location';
+                button.innerHTML === 'Edit Location' ? form.setAttribute('style', 'display: none') : form.setAttribute('style', ''); ;
+
 
         }
-        const res = dispatch(updateLocation({locationId, data}))
+
+        const res = await dispatch(updateLocation({locationId, data}))
         .catch(async (res) => {
             const data = await res.json();
-            if (data && data.errors) setValErrors(data.errors);
-        });
+            if (data && data.errors) {setValErrors(data.errors)}
 
-        if (res && !valErrors.length) {
-            formHide();
+        });
+        console.log(res)
+
+        if (res) {
             setValErrors([])
+            formHide();
         }
+
 
     }
 
