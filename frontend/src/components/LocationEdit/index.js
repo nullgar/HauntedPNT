@@ -8,7 +8,7 @@ const LocationEdit = () => {
     const backup = useLocation();
     const backupLocation = backup.pathname.split('/')[2];
     const location = useSelector(state => state.locations[locationId]);
-
+    const user = useSelector(state => state.session.user);
     const [name, setName] = useState(location ? location.name : '')
     const [address, setAddress] = useState(location ? location.address : '')
     const [city, setCity] = useState(location ? location.city : '')
@@ -28,7 +28,7 @@ const LocationEdit = () => {
         e.preventDefault()
 
         const data = {
-            userId: 1,
+            userId: user.id,
             name: name,
             address: address,
             city: city,
