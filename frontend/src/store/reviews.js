@@ -80,9 +80,9 @@ const reviewsReducer = (state = {}, action) => {
             return newReviews
         case DELETE_REVIEW:
             const finalReviews = {...state};
-            console.log(finalReviews)
+
             delete finalReviews[action.reviewId];
-            console.log(finalReviews)
+
             return finalReviews
         default:
             return state;

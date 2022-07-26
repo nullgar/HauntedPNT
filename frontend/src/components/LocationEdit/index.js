@@ -8,7 +8,7 @@ const LocationEdit = () => {
     const backup = useLocation();
     const backupLocation = backup.pathname.split('/')[2];
     const location = useSelector(state => state.locations[locationId]);
-
+    const user = useSelector(state => state.session.user);
     const [name, setName] = useState(location ? location.name : '')
     const [address, setAddress] = useState(location ? location.address : '')
     const [city, setCity] = useState(location ? location.city : '')
@@ -28,7 +28,7 @@ const LocationEdit = () => {
         e.preventDefault()
 
         const data = {
-            userId: 1,
+            userId: user.id,
             name: name,
             address: address,
             city: city,
@@ -37,10 +37,19 @@ const LocationEdit = () => {
             legend: legend
         }
 
+        const formHide = () => {
+            const form = document.querySelector('#formHide');
+            const button = document.querySelector('#formHide-button');
+            // form.setAttribute('style', '');
+            button.innerHTML === 'Edit Location' ? button.innerHTML = 'Cancel Edit' : button.innerHTML = 'Edit Location';
+            button.innerHTML === 'Edit Location' ? form.setAttribute('style', 'display: none') : form.setAttribute('style', ''); ;
+
+        }
         const res = dispatch(updateLocation({locationId, data}))
 
         if (res) {
-            return history.push(`/location/${locationId}`)
+            formHide();
+
         }
 
     }

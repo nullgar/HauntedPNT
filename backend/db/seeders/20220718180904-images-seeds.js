@@ -12,10 +12,6 @@ module.exports = {
     {
     locationId: 1,
     url: 'https://travelnevada.com/wp-content/uploads/2020/05/lass-id-original-1564157489-5d3b26312442e.jpg'
-   },
-   {
-    locationId: 1,
-    url: 'https://travelnevada.com/wp-content/uploads/2020/05/lass-id-original-1564157489-5d3b26312442e.jpg'
    }
   ], {});
   },
