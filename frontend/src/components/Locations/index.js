@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { loadImages } from "../../store/image";
 import { loadLocations} from "../../store/location";
+import NewLocationButton from "../NewLocationButton";
+import './Locations.css';
 
 const Locations = () => {
     const dispatch = useDispatch();
@@ -18,34 +20,36 @@ const Locations = () => {
 
     if (allLocations && allImages) {
         return (
-            <div>
-                {user ? <button><Link to={'/location/new'}>Add a New Location</Link></button> : null}
+            <>
+            {user ? <NewLocationButton /> : null}
+            <div className="mainLocationsDiv">
                 {Object.values(allLocations).map(location => {
                     const locationImages = Object.values(allImages).filter(image => (image.locationId === location.id));
                     return (
-                    <div key={location.id + 7}>
-                        <h1>
-                            <Link to={`/location/${location.id}`}>
+                        <div className='eachLocationDiv' key={location.id + 7}>
+                        <h1 className="mainLocationsHeader">
+                            <Link  className='mainLocationsLinks' to={`/location/${location.id}`}>
                             {location.name}
                             </Link>
                         </h1>
                         <Link to={`/location/${location.id}`}>
                             {
                                 locationImages.length ?
-                                <img src={locationImages[0].url} />
+                                <img className="mainLocationsImage" src={locationImages[0].url} />
                                 : null
                             }
                         </Link>
-                        <p>{location.city}</p>
-                        <p>{location.state}</p>
-                        <p>{location.country}</p>
+                        <p className="mainLocationsInfo" >{location.city}</p>
+                        <p className="mainLocationsInfo" >{location.state}</p>
+                        <p className="mainLocationsInfo" >{location.country}</p>
 
 
                     </div>
                     )
-                    })}
+                })}
 
             </div>
+            </>
         )
 
     } else {

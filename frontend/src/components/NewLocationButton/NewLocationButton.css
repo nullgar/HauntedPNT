@@ -1,0 +1,16 @@
+.newLocationButtonDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    /* top: 10px */
+}
+
+.newLocationButton {
+    border-radius: 4px;
+}
+
+.newLocationLink {
+    text-decoration: none;
+    color: black;
+}
