@@ -40,7 +40,8 @@ const ReviewCreate = () => {
         const star = document.getElementById(`star ${value}`);
         if (star.className !== `${starActive}`) {
             star.setAttribute('class', `${starActive}`)
-        } else {star.setAttribute('class', `${starInactive}`)}
+        }
+
 
 
         const ratingStars = [...document.getElementsByClassName('rating__star')];
