@@ -1,0 +1,65 @@
+.hideLocationItems {
+   display: none;
+}
+
+.unhideLocationItems {
+    /* display: flex; */
+    display: inline;
+}
+.locationMainDiv {
+    display: grid;
+    grid-template-areas:
+    '. . top top'
+    'mid mid midright midright'
+    'button button button .'
+    'botleft bot bot bot'
+    ;
+    grid-template-rows: 70px 1fr 200px 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* flex-flow: column; */
+    /* flex-wrap: wrap; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    margin: 0;
+}
+.locationHeaders {
+    grid-area: top;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column; */
+    color: black;
+}
+.locationImages {
+    grid-area: mid;
+    /* display: inline; */
+    border-radius: 30px;
+    width: 60vw;
+    /* display: inline-block; */
+}
+.locationInfo {
+    display: flex;
+    flex-flow: column;
+    grid-area: midright;
+
+}
+.locationButton {
+    grid-area: button;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    /* grid-area: midright; */
+
+}
+.locationCreateReviewDiv {
+    grid-area: botleft;
+}
+.locationViewReviewsDiv {
+    grid-area: bot;
+    display: flex;
+    /* flex-flow: column; */
+}
+.locationPTags {
+    display: inline-flex;
+}

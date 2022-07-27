@@ -9,8 +9,8 @@ const validateImage = [
     check('url')
         .exists()
         .withMessage('Url cannot be empty.')
-        .isLength({ min: 1, max: 150 })
-        .withMessage('Url needs to be between 1 - 150 characters.')
+        .isLength({ min: 1, max: 250 })
+        .withMessage('Url needs to be between 1 - 250 characters.')
         .matches(/^(https:\/\/).+((.jpg)|(.jpeg)|(.png)|(.svg))$/)
         .withMessage('Url needs to end in .jpg, .jpeg, .png, or .svg.'),
         handleValidationErrors

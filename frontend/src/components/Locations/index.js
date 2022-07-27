@@ -54,7 +54,7 @@ const Locations = () => {
 
     } else {
         return(
-            <h1>Error Nothing Loaded</h1>
+            <h1 className="mainLocationsHeader" >Error Nothing Loaded</h1>
         )
     }
 }
