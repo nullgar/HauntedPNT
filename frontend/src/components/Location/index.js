@@ -82,10 +82,12 @@ const Location = () => {
                 </>
                 : null
                 }
-                <div className='locationCreateReviewDiv'>
-                    {user ? <ReviewCreate /> : null}
 
-                </div>
+                {user ?<div className='locationCreateReviewDiv'> <ReviewCreate />
+                    </div>
+
+                : null}
+
                 <h3 className="viewReviewsHeader">See What People Are Saying</h3>
                 <div className='locationViewReviewsDiv'>
                     <ViewReviews />

@@ -15,7 +15,7 @@
 .unhideLocationItems {
     /* display: flex; */
     position: relative;
-    top: 15%;
+    top: 20%;
     display: inline;
     background-color: whitesmoke;
     width: 20vw;
@@ -43,15 +43,15 @@
     /* align-items: center; */
     box-sizing: content-box;
     width: 50vw;
-    height: 80vh;
+    height: 70vh;
 }
 .locationImages {
 
-    /* grid-area: mid; */
-    /* display: inline; */
+
     border: 2px solid whitesmoke;
     border-radius: 30px;
     width: 50vw;
+    height: 50vh;
     /* display: inline-block; */
 }
 .locationInfo {
