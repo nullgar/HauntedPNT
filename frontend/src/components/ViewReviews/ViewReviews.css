@@ -1,0 +1,17 @@
+.viewReviewsDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-wrap: wrap; */
+}
+.viewReviewsHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.viewReviewsDiv{
+    border: 2px black solid;
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: column;
+}

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { deleteReview, loadReviews } from "../../store/reviews";
+import './ViewReviews.css';
 
 const ViewReviews = () => {
     const {locationId} = useParams()
@@ -25,10 +26,10 @@ const ViewReviews = () => {
     }
     return (
         <>
-        <div>
-            <h3>See What People Are Saying</h3>
+        <div className="viewMainReviewsDiv">
+            <h3 className="viewReviewsHeader">See What People Are Saying</h3>
             {reviews ? Object.values(reviews).map(review => (
-                <div key={review.id}>
+                <div className="viewReviewsDiv" key={review.id}>
                     <p>{review.User.username}</p>
                     <p>{review.review}</p>
                     <p>{review.rating}/5</p>

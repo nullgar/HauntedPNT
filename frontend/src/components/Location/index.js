@@ -7,6 +7,7 @@ import LocationEdit from '../LocationEdit';
 import LocationImage from '../LocationImage';
 import ReviewCreate from '../ReviewCreate';
 import ViewReviews from '../ViewReviews';
+import './Location.css'
 
 const Location = () => {
     const dispatch = useDispatch();
@@ -35,46 +36,58 @@ const Location = () => {
         const button = document.querySelector('#formHide-button');
         // form.setAttribute('style', '');
         button.innerHTML === 'Edit Location' ? button.innerHTML = 'Cancel Edit' : button.innerHTML = 'Edit Location';
-        button.innerHTML === 'Edit Location' ? form.setAttribute('style', 'display: none') : form.setAttribute('style', ''); ;
+        button.innerHTML === 'Edit Location' ? form.setAttribute('class', 'hideLocationItems') : form.setAttribute('class', 'unhideLocationItems'); ;
 
     }
 
         if (location && locationImages){
 
             return (
-                <div>
-                <h1>
+                <div className='locationMainDiv'>
+                <h1 className='locationHeaders'>
                     {location.name}
                 </h1>
                 {Object.values(locationImages).map(image => (
 
-                    <img src={image.url} key={image.id} />
+                    <img className='locationImages' src={image.url} key={image.id} />
                 ))}
                 {!locationImages.length ? <LocationImage /> : null}
-                <p>{location.address}</p>
+                <div className='locationInfo'>
+                    <p className='locationPTags'>{location.address}</p>
 
-                <p>{location.city}</p>
+                    <p className='locationPTags'>{location.city}</p>
 
-                <p>{location.country}</p>
+                    <p className='locationPTags'>{location.country}</p>
 
-                <p>{location.state}</p>
+                    <p className='locationPTags'>{location.state}</p>
 
-                <p>{location.legend}</p>
+                    <p className='locationPTags'>{location.legend}</p>
+
+                </div>
                 {user && user.id === location.userId ?
                 <>
+                <div className='locationButton'>
+
                 <button id='formHide-button' onClick={formHide}>
                     Edit Location
                 </button>
-                <div id='formHide' style={{'display': 'none'}}>
+                <div id='formHide' className='hideLocationItems' >
                 <LocationEdit />
+                </div>
+                {user && user.id === location.userId ? <button  onClick={() => handleDelete(location ? location.id : backupLocation)}>Delete Location</button> : null}
                 </div>
                 </>
                 : null
                 }
-                {user && user.id === location.userId ? <button onClick={() => handleDelete(location ? location.id : backupLocation)}>Delete Location</button> : null}
 
-                {user ? <ReviewCreate /> : null}
-                <ViewReviews />
+                <div className='locationCreateReviewDiv'>
+                    {user ? <ReviewCreate /> : null}
+
+                </div>
+                <div className='locationViewReviewsDiv'>
+                    <ViewReviews />
+
+                </div>
 
             </div>
 

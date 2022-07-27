@@ -38,16 +38,16 @@ const LocationEdit = () => {
             legend: legend
         }
 
-        const formHide = () => {
+        // const formHide = () => {
 
-                const form = document.querySelector('#formHide');
-                const button = document.querySelector('#formHide-button');
-                // form.setAttribute('style', '');
-                button.innerHTML === 'Edit Location' ? button.innerHTML = 'Cancel Edit' : button.innerHTML = 'Edit Location';
-                button.innerHTML === 'Edit Location' ? form.setAttribute('style', 'display: none') : form.setAttribute('style', ''); ;
+        //         const form = document.querySelector('#formHide');
+        //         const button = document.querySelector('#formHide-button');
+        //         // form.setAttribute('style', '');
+        //         button.innerHTML === 'Edit Location' ? button.innerHTML = 'Cancel Edit' : button.innerHTML = 'Edit Location';
+        //         button.innerHTML === 'Edit Location' ? form.setAttribute('style', 'display: none') : form.setAttribute('style', ''); ;
 
 
-        }
+        // }
 
         const res = await dispatch(updateLocation({locationId, data}))
         .catch(async (res) => {
@@ -55,11 +55,11 @@ const LocationEdit = () => {
             if (data && data.errors) {setValErrors(data.errors)}
 
         });
-        console.log(res)
+
 
         if (res) {
             setValErrors([])
-            formHide();
+            // formHide();
         }
 
 
