@@ -1,40 +1,57 @@
 .hideLocationItems {
    display: none;
 }
-
+.formHide-Button {
+    cursor: pointer;
+    position: relative;
+    /* top: 30%; */
+    right: 5%;
+    height: 5vh;
+    width: 5vw;
+    border-radius: 5px;
+    border: solid black 1px;
+    color: black;
+}
 .unhideLocationItems {
     /* display: flex; */
+    position: relative;
+    top: 15%;
     display: inline;
+    background-color: whitesmoke;
+    width: 20vw;
+    height: 40vh;
+    padding-bottom: 4%;
 }
 .locationMainDiv {
     display: grid;
     grid-template-areas:
     '. . top top'
     'mid mid midright midright'
-    'button button button .'
     'botleft bot bot bot'
     ;
-    grid-template-rows: 70px 1fr 200px 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
-    /* flex-flow: column; */
-    /* flex-wrap: wrap; */
-    /* justify-content: center; */
-    /* align-items: center; */
     margin: 0;
 }
 .locationHeaders {
     grid-area: top;
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column; */
-    color: black;
+}
+.locationImagesDiv {
+    position: relative;
+    left: 12.5%;
+    grid-area: mid;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    box-sizing: content-box;
+    width: 50vw;
+    height: 80vh;
 }
 .locationImages {
-    grid-area: mid;
+
+    /* grid-area: mid; */
     /* display: inline; */
+    border: 2px solid whitesmoke;
     border-radius: 30px;
-    width: 60vw;
+    width: 50vw;
     /* display: inline-block; */
 }
 .locationInfo {
@@ -44,22 +61,66 @@
 
 }
 .locationButton {
-    grid-area: button;
+    grid-area: midright;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-flow: column;
+    flex-flow: row;
     /* grid-area: midright; */
 
 }
+.viewReviewsHeader {
+    position: relative;
+    left: 3%;
+    display: flex;
+    justify-content: center;
+    grid-area: bot;
+
+}
 .locationCreateReviewDiv {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 25%;
+    margin-top: 10vh;
+    border: 1px solid rgba(255, 0, 0, 0.5);
+    background-color: whitesmoke;
+    border-radius: 10px;
     grid-area: botleft;
+    height: 30vh;
+    width: 30vw;
+
 }
 .locationViewReviewsDiv {
+    background-color: whitesmoke;
+    border: 1px solid whitesmoke;
+    border-radius: 10px;
     grid-area: bot;
+    position: relative;
+    top: 10vh;
+    left: 10vw;
     display: flex;
-    /* flex-flow: column; */
+    /* flex-flow: row; */
+    /* justify-content: center; */
+    align-items: center;
+    /* overflow-y: auto; */
+    /* overflow-y: scroll;
+    height: 50vh; */
+    width: 50vw;
+    flex-flow: column;
 }
 .locationPTags {
     display: inline-flex;
+}
+.locationDeleteButton {
+    cursor: pointer;
+    position: relative;
+    margin: 10%;
+    height: 5vh;
+    width: 5vw;
+    background-color: red;
+    border: whitesmoke solid 1px;
+    border-radius: 5px;
 }

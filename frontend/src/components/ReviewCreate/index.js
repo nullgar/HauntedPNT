@@ -81,26 +81,26 @@ const ReviewCreate = () => {
 
 
     return (
-        <div>
+        <div className="reviewMasterDiv">
             <ul>
                 {valErrors.map(err => (
                     <li key={err}>{err}</li>
                 ))}
             </ul>
-            <form>
-                <label htmlFor="review">Please Enter a Review: </label>
-                <textarea name='review' value={review} onChange={e => setReview(e.target.value)}></textarea>
+            <form className="createReviewForm">
+                <label className='reviewCreateText' htmlFor="review" >Please Enter a Review: </label>
+                <textarea className="reviewCreateTextArea" name='review' value={review} onChange={e => setReview(e.target.value)}></textarea>
 
-                <label></label>
 
                 <div className="rating">
+                    <label className='reviewCreateText' >Rating: </label>
                     <i className="rating__star far fa-star" id={'star 1'} onClick={handleStars}></i>
                     <i className="rating__star far fa-star" id={'star 2'} onClick={handleStars}></i>
                     <i className="rating__star far fa-star" id={'star 3'} onClick={handleStars}></i>
                     <i className="rating__star far fa-star" id={'star 4'} onClick={handleStars}></i>
                     <i className="rating__star far fa-star" id={'star 5'} onClick={handleStars}></i>
                 </div>
-                <button onClick={handleReviewSubmit}>Submit Review</button>
+                <button className="reviewCreateSubmitButton" onClick={handleReviewSubmit}>Submit Review</button>
             </form>
         </div>
     )

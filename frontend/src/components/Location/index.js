@@ -34,9 +34,11 @@ const Location = () => {
     const formHide = () => {
         const form = document.querySelector('#formHide');
         const button = document.querySelector('#formHide-button');
+        const deleteButton = document.querySelector('#hideDeleteButton');
         // form.setAttribute('style', '');
         button.innerHTML === 'Edit Location' ? button.innerHTML = 'Cancel Edit' : button.innerHTML = 'Edit Location';
         button.innerHTML === 'Edit Location' ? form.setAttribute('class', 'hideLocationItems') : form.setAttribute('class', 'unhideLocationItems'); ;
+        button.innerHTML === 'Cancel Edit' ? deleteButton.setAttribute('class', 'hideLocationItems') : deleteButton.setAttribute('class', 'locationDeleteButton'); ;
 
     }
 
@@ -47,10 +49,11 @@ const Location = () => {
                 <h1 className='locationHeaders'>
                     {location.name}
                 </h1>
-                {Object.values(locationImages).map(image => (
-
-                    <img className='locationImages' src={image.url} key={image.id} />
-                ))}
+                <div className='locationImagesDiv'>
+                    {Object.values(locationImages).map(image => (
+                        <img className='locationImages' src={image.url} key={image.id} />
+                        ))}
+                </div>
                 {!locationImages.length ? <LocationImage /> : null}
                 <div className='locationInfo'>
                     <p className='locationPTags'>{location.address}</p>
@@ -68,22 +71,22 @@ const Location = () => {
                 <>
                 <div className='locationButton'>
 
-                <button id='formHide-button' onClick={formHide}>
+                <button id='formHide-button' className='formHide-Button' onClick={formHide}>
                     Edit Location
                 </button>
                 <div id='formHide' className='hideLocationItems' >
                 <LocationEdit />
                 </div>
-                {user && user.id === location.userId ? <button  onClick={() => handleDelete(location ? location.id : backupLocation)}>Delete Location</button> : null}
+                {user && user.id === location.userId ? <button id='hideDeleteButton' className='locationDeleteButton'  onClick={() => handleDelete(location ? location.id : backupLocation)}>Delete Location</button> : null}
                 </div>
                 </>
                 : null
                 }
-
                 <div className='locationCreateReviewDiv'>
                     {user ? <ReviewCreate /> : null}
 
                 </div>
+                <h3 className="viewReviewsHeader">See What People Are Saying</h3>
                 <div className='locationViewReviewsDiv'>
                     <ViewReviews />
 

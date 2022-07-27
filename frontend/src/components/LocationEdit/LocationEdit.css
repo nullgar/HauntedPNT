@@ -1,0 +1,31 @@
+.editLocationFormDiv {
+    /* background-color: whitesmoke; */
+
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    position: relative;
+    top: 20%;
+
+}
+.editLocationForm {
+    /* background-color: whitesmoke; */
+    display: flex;
+    flex-flow: column;
+    color: black;
+    width: 75%;
+    margin-bottom: 2%;
+}
+.editLocationLabel {
+    color: black;
+}
+.editLocationSubmitButton {
+    color: black;
+}
+.editLocationTextArea {
+    height: 10vh;
+    color: black;
+}
+.editLocationText {
+    color: black;
+}
