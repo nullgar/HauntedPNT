@@ -3,8 +3,11 @@
     display: flex;
     justify-content: space-around;
     position: sticky;
+    box-sizing: border-box;
+    width: 100%;
     bottom: 0%;
-
+    height: 50px;
+    margin-top: 150px;
 }
 
 .footerMainDivOpen {
@@ -13,6 +16,8 @@
     display: flex;
     justify-content: space-around;
     position: sticky;
+    box-sizing: border-box;
+    width: 100%;
     bottom: 0%;
 }
 
