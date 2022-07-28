@@ -1,15 +1,14 @@
 .editLocationFormDiv {
-    /* background-color: whitesmoke; */
-
+    background-color: whitesmoke;
     display: flex;
     align-items: center;
     flex-flow: column;
     position: relative;
-    top: 20%;
-
+    bottom: 10%;
+    border-radius: 20px;
+    padding-bottom: 10%;
 }
 .editLocationForm {
-    /* background-color: whitesmoke; */
     display: flex;
     flex-flow: column;
     color: black;
@@ -23,9 +22,23 @@
     color: black;
 }
 .editLocationTextArea {
-    height: 10vh;
+    height: 10%;
     color: black;
 }
 .editLocationText {
     color: black;
+}
+.editLocationUl {
+    display: flex;
+    flex-flow: column;
+    list-style: none;
+
+}
+
+.editLocationLi {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: red;
+    margin: 1% 0;
 }

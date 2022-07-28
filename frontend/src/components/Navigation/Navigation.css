@@ -1,0 +1,128 @@
+.mainNavigationBar {
+    display: flex;
+    background-color: whitesmoke;
+    height: 10%;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    z-index: 1;
+    border: 3px solid rgba(0, 0, 0, 0.60) ;
+    box-sizing: border-box;
+    /* position: 1; */
+
+    top: 0;
+}
+.logoDiv {
+    display: flex;
+    padding-left: 5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+
+}
+.logo {
+    border: solid black 1px;
+    border-radius: 50px;
+    object-fit: contain;
+    width: 6%;
+    height: 6%;
+    transform: rotate(90deg);
+    /* padding-left: 35%; */
+    /* background-repeat: no-repeat; */
+}
+.navigationHeader {
+    color: black;
+    position: relative;
+    left: 2%;
+}
+.userButtonsMainPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 40px; */
+    padding-right: 5%;
+}
+.sessionLinksDiv {
+    display: flex;
+    /* margin: 20%; */
+}
+.sessionLinks {
+    font-size: 17px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    margin: 7%;
+}
+
+
+/* image {
+    height: 100px;
+    width: 100px;
+} */
+.homeSessionLink{
+    font-size: 17px;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 30px;
+    font-family: sans-serif;
+}
+.activeHomeSessionLink {
+    font-size: 17px;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 30px;
+}
+.inactiveButton{
+    border: 2px solid black;
+    color: black;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    margin-left: 1%;
+    cursor: pointer;
+}
+.activeButton {
+    border: 2px solid black;
+    color: black;
+    border: 2px solid #DDDDDD;
+    height: 50px;
+    width: 50px;
+    border-radius: 60px;
+    cursor: pointer;
+}
+
+.demoUserButton {
+    border: 2px solid black;
+    color: black;
+    margin-top: 4%;
+    margin-right: 3%;
+    font-weight: bold;
+    margin-left: 10px;
+    border-radius: 100px;
+    height: 50px;
+    width: 50px;
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+
+.profile-dropdownStyle {
+    list-style: none;
+
+}
+
+.profile-dropdownStyleElement {
+    color: black;
+    font-weight: lighter;
+    font-size: medium;
+    padding-bottom: 5%;
+}
+.profile-dropdownStyleButton {
+    border-radius: 5px;
+    border: 2px solid black;
+    cursor: pointer;
+    color: black;
+}
+.icon {
+    color: black;
+}

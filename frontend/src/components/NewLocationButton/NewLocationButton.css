@@ -1,13 +1,29 @@
 .newLocationButtonDiv {
+    margin-top: 3%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: sticky;
-    /* top: 10px */
+    top: 30px;
+    left: 45%;
+    z-index: 2;
+    box-sizing: content-box;
+    width: fit-content;
 }
 
 .newLocationButton {
-    border-radius: 4px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 10vw;
+    height: 5vh;
+    z-index: 0;
+    position: sticky;
+    /* top: 10px; */
+}
+
+.newLocationButton:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
 }
 
 .newLocationLink {

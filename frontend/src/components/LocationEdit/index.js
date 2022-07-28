@@ -69,9 +69,9 @@ const LocationEdit = () => {
 
     return (
         <div>
-            <ul>
+            <ul className="editLocationUl">
                 {valErrors.map(err => (
-                    <li key={err}>{err}</li>
+                    <li className="editLocationLi" key={err}>{err}</li>
                 ))}
             </ul>
         {location ?
