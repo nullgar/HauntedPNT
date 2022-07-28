@@ -82,9 +82,9 @@ const ReviewCreate = () => {
 
     return (
         <div className="reviewMasterDiv">
-            <ul>
+            <ul className="reviewCreateUl">
                 {valErrors.map(err => (
-                    <li key={err}>{err}</li>
+                    <li className="reviewCreateLi" key={err}>{err}</li>
                 ))}
             </ul>
             <form className="createReviewForm">

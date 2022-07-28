@@ -1,11 +1,6 @@
 .createImageFormDiv {
     position: relative;
     position: 0;
-    left: 12.5%;
-    grid-area: mid;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
     box-sizing: content-box;
     width: 70%;
     height: 50%;

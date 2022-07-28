@@ -15,6 +15,7 @@
 .reviewCreateText {
    color: black;
    display: flex;
+   margin: 6% 0 6% 0;
 }
 .reviewCreateTextArea {
    height: 10vh;
@@ -30,4 +31,24 @@
    width: 7vw;
    cursor: pointer;
    border-radius: 5px;
+}
+
+.reviewCreateSubmitButton:hover {
+   background-color: rgb(212, 212, 212);
+   cursor: pointer;
+}
+
+.reviewCreateUl {
+   display: flex;
+   flex-flow: column;
+   list-style: none;
+
+}
+
+.reviewCreateLi {
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   color: red;
+   margin: 1% 0;
 }

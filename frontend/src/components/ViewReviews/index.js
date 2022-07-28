@@ -35,7 +35,7 @@ const ViewReviews = () => {
                     <p>{review.rating}/5</p>
                     {user && user.id === review.userId ? <button className="viewReviewsDeleteButton" onClick={() => handledeleteReview(review.id)}>Delete Review</button> : null}
                 </div>
-            )) : <div className="viewReviewsDiv"><p className="noReviewPTag">No Reviews</p></div>}
+            )) : <p className="noReviewPTag">No Reviews</p>}
 
 
         </div>

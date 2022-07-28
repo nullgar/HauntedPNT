@@ -1,28 +1,26 @@
-/* .viewReviewsDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-flow: row;
-} */
+.viewMainReviewsDiv {
+    width: 80%;
+    margin-top: 10%;
+}
 
 .viewReviewsDiv{
     background-color: #1c1e2d;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-bottom: 15%;
     border: 1px whitesmoke solid;
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
     flex-flow: column;
-    height: 30vh;
-    width: 45vw;
     box-sizing: border-box;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    padding: 5%;
 }
 .noReviewPTag {
-    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    color: black;
 }
 .viewReviewsDeleteButton {
     cursor: pointer;
@@ -30,4 +28,8 @@
     border: whitesmoke solid 1px;
     border-radius: 5px;
 
+}
+
+.viewReviewsDeleteButton:hover {
+    background-color: rgb(206, 4, 4);
 }
