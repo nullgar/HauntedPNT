@@ -1,17 +1,36 @@
-.viewReviewsDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* flex-wrap: wrap; */
+.viewMainReviewsDiv {
+    width: 80%;
+    margin: 10%;
 }
-.viewReviewsHeader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 .viewReviewsDiv{
-    border: 2px black solid;
+    background-color: #1c1e2d;
+    margin-bottom: 15%;
+    border: 1px whitesmoke solid;
+    border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
     flex-flow: column;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+}
+.noReviewPTag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: black;
+}
+.viewReviewsDeleteButton {
+    cursor: pointer;
+    background-color: red;
+    border: whitesmoke solid 1px;
+    border-radius: 5px;
+
+}
+
+.viewReviewsDeleteButton:hover {
+    background-color: rgb(206, 4, 4);
 }

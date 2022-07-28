@@ -26,24 +26,23 @@ const Locations = () => {
                 {Object.values(allLocations).map(location => {
                     const locationImages = Object.values(allImages).filter(image => (image.locationId === location.id));
                     return (
-                        <div className='eachLocationDiv' key={location.id + 7}>
-                        <h1 className="mainLocationsHeader">
+                        <div className='eachLocationDiv' key={location.id + 777}>
                             <Link  className='mainLocationsLinks' to={`/location/${location.id}`}>
+
+
+                        <h1 className="mainLocationsHeader">
                             {location.name}
-                            </Link>
                         </h1>
-                        <Link to={`/location/${location.id}`}>
                             {
                                 locationImages.length ?
                                 <img className="mainLocationsImage" src={locationImages[0].url} />
                                 : null
                             }
-                        </Link>
                         <p className="mainLocationsInfo" >{location.city}</p>
                         <p className="mainLocationsInfo" >{location.state}</p>
                         <p className="mainLocationsInfo" >{location.country}</p>
 
-
+                    </Link>
                     </div>
                     )
                 })}

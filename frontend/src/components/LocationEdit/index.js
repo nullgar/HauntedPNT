@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useLocation, useParams } from "react-router-dom"
 import { loadLocations, updateLocation } from "../../store/location";
+import './LocationEdit.css'
 
 const LocationEdit = () => {
     const {locationId} = useParams();
@@ -38,16 +39,17 @@ const LocationEdit = () => {
             legend: legend
         }
 
-        // const formHide = () => {
+        const formHide = () => {
 
-        //         const form = document.querySelector('#formHide');
-        //         const button = document.querySelector('#formHide-button');
-        //         // form.setAttribute('style', '');
-        //         button.innerHTML === 'Edit Location' ? button.innerHTML = 'Cancel Edit' : button.innerHTML = 'Edit Location';
-        //         button.innerHTML === 'Edit Location' ? form.setAttribute('style', 'display: none') : form.setAttribute('style', ''); ;
+            const form = document.querySelector('#formHide');
+            const button = document.querySelector('#formHide-button');
+            const deleteButton = document.querySelector('#hideDeleteButton');
+            button.innerHTML === 'Edit Location' ? button.innerHTML = 'Cancel Edit' : button.innerHTML = 'Edit Location';
+            button.innerHTML === 'Edit Location' ? form.setAttribute('class', 'hideLocationItems') : form.setAttribute('class', 'unhideLocationItems') ;
+            button.innerHTML === 'Cancel Edit' ? deleteButton.setAttribute('class', 'hideLocationItems') : deleteButton.setAttribute('class', 'locationDeleteButton'); ;
 
 
-        // }
+        }
 
         const res = await dispatch(updateLocation({locationId, data}))
         .catch(async (res) => {
@@ -59,7 +61,7 @@ const LocationEdit = () => {
 
         if (res) {
             setValErrors([])
-            // formHide();
+            formHide();
         }
 
 
@@ -67,34 +69,38 @@ const LocationEdit = () => {
 
     return (
         <div>
-            <ul>
+            <ul className="editLocationUl">
                 {valErrors.map(err => (
-                    <li key={err}>{err}</li>
+                    <li className="editLocationLi" key={err}>{err}</li>
                 ))}
             </ul>
         {location ?
-        <form onSubmit={handleEdit}>
-        <label htmlFor='name'>Name</label>
-        <input name='name' value={name} onChange={e => setName(e.target.value)} required ></input>
+        <div className="editLocationFormDiv">
 
-        <label htmlFor='address'>Address</label>
-        <input name='address' value={address} onChange={(e) => setAddress(e.target.value)} required ></input>
+        <form className="editLocationForm" onSubmit={handleEdit}>
+        <label className='editLocationLabel' htmlFor='name'>Name</label>
+        <input className='editLocationText' name='name' value={name} onChange={e => setName(e.target.value)} required ></input>
 
-        <label>City</label>
-        <input name='name' value={city} onChange={(e) => setCity(e.target.value)} required ></input>
+        <label className='editLocationLabel' htmlFor='address'>Address</label>
+        <input className='editLocationText' name='address' value={address} onChange={(e) => setAddress(e.target.value)} required ></input>
 
-        <label>State</label>
-        <input name='name' value={state} onChange={(e) => setState(e.target.value)} required ></input>
+        <label className='editLocationLabel' htmlFor="city">City</label>
+        <input className='editLocationText' name='name' value={city} onChange={(e) => setCity(e.target.value)} required ></input>
 
-        <label>Country</label>
-        <input name='name' value={country} onChange={(e) => setCountry(e.target.value)} required ></input>
+        <label className='editLocationLabel' htmlFor="state">State</label>
+        <input className='editLocationText' name='name' value={state} onChange={(e) => setState(e.target.value)} required ></input>
 
-        <label>Legend</label>
-        <textarea name='name' value={legend} onChange={(e) => setLegend(e.target.value)} required ></textarea>
-        <button>Submit</button>
+        <label className='editLocationLabel' htmlFor="country">Country</label>
+        <input className='editLocationText' name='name' value={country} onChange={(e) => setCountry(e.target.value)} required ></input>
+
+        <label className='editLocationLabel' htmlFor="legend">Legend</label>
+        <textarea className='editLocationTextArea' name='name' value={legend} onChange={(e) => setLegend(e.target.value)} required ></textarea>
+
+        <button className='editLocationSubmitButton' >Submit</button>
         </form>
 
-    : <h1>wait</h1>}
+        </div>
+    : <h1>Please go back home!</h1>}
     </div>
     )
 }

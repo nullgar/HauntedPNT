@@ -1,8 +1,54 @@
 .rating {
-    width: 180px;
- }
+   width: 180px;
+   margin-top: 5%;
+}
 
- .rating__star {
-    cursor: pointer;
-    color: #dabd18b2;
- }
+.rating__star {
+   cursor: pointer;
+   color: #dabd18b2;
+}
+
+.reviewMasterDiv {
+   border-radius: 1px;
+
+}
+.reviewCreateText {
+   color: black;
+   display: flex;
+   margin: 6% 0 6% 0;
+}
+.reviewCreateTextArea {
+   height: 10vh;
+   width: 20vw;
+   overflow: hidden;
+   resize: none;
+   color: black;
+}
+.reviewCreateSubmitButton {
+   margin-top: 5%;
+   color: black;
+   height: 5vh;
+   width: 7vw;
+   cursor: pointer;
+   border-radius: 5px;
+}
+
+.reviewCreateSubmitButton:hover {
+   background-color: rgb(212, 212, 212);
+   cursor: pointer;
+}
+
+.reviewCreateUl {
+   display: flex;
+   flex-flow: column;
+   list-style: none;
+
+}
+
+.reviewCreateLi {
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   color: red;
+   margin: 1% 0;
+}

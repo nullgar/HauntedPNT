@@ -1,0 +1,139 @@
+.mainNavigationBar {
+    display: flex;
+    background-color: whitesmoke;
+    height: 10%;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    z-index: 1;
+    border: 3px solid rgba(0, 0, 0, 0.60) ;
+    box-sizing: border-box;
+    top: 0;
+}
+.logoDiv {
+    display: flex;
+    padding-left: 5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+
+}
+.logo {
+    border: solid black 3px;
+    border-radius: 100%;
+    width: 6%;
+    height: 5%;
+    animation: spin 10s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.navigationHeader {
+    color: black;
+    position: relative;
+    left: 2%;
+}
+.userButtonsMainPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 5%;
+}
+.sessionLinksDiv {
+    display: flex;
+}
+.sessionLinks {
+    font-size: 17px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    margin: 7%;
+}
+
+.homeSessionLink{
+    font-size: 17px;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 30px;
+    font-family: sans-serif;
+}
+.activeHomeSessionLink {
+    font-size: 17px;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 30px;
+}
+.inactiveButton{
+    border: 2px solid black;
+    color: black;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    margin-left: 1%;
+    cursor: pointer;
+}
+.inactiveButton:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+}
+.activeButton {
+    border: 2px solid black;
+    color: black;
+    border: 2px solid #DDDDDD;
+    height: 50px;
+    width: 50px;
+    border-radius: 60px;
+    cursor: pointer;
+}
+.activeButton:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+}
+.demoUserButton {
+    text-align: center;
+    border: 2px solid black;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4%;
+    margin-right: 3%;
+    margin-left: 10px;
+    border-radius: 30px;
+    height: 50px;
+    width: 50px;
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+
+.demoUserButton:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+}
+
+.profile-dropdownStyle {
+    list-style: none;
+
+}
+
+.profile-dropdownStyleElement {
+    color: black;
+    font-weight: lighter;
+    font-size: medium;
+    padding-bottom: 5%;
+}
+.profile-dropdownStyleButton {
+    border-radius: 5px;
+    border: 2px solid black;
+    cursor: pointer;
+    color: black;
+}
+.profile-dropdownStyleButton:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+}
+.icon {
+    color: black;
+}

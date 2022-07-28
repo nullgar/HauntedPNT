@@ -19,22 +19,26 @@ const validateLocation = [
         .withMessage('Address cannot be empty.')
         .isLength({ min: 5, max: 50 })
         .withMessage('Address needs to be between 5 - 50 characters.'),
-    check('legend')
-        .exists()
-        .withMessage('Legend cannot be empty!.')
-        .isLength({ min: 5, max: 300 })
-        .withMessage('Legends need to be between 5 - 300 characters!'),
     check('city')
         .exists()
         .withMessage('Please provide the locations City.')
         .isLength({ min: 3, max: 50 })
         .withMessage('City needs to be between 3 - 50 characters.'),
+    check('state')
+        .exists()
+        .withMessage('Please provide the locations State.')
+        .isLength({ min: 2, max: 50 })
+        .withMessage('State needs to be between 2 - 50 characters.'),
     check('country')
         .exists()
         .withMessage('Please provide the locations Country.')
         .isLength({ min: 3, max: 50 })
         .withMessage('Country needs to be between 5 - 50 characters.'),
-
+    check('legend')
+        .exists()
+        .withMessage('Legend cannot be empty!.')
+        .isLength({ min: 5, max: 1000 })
+        .withMessage('Legends need to be between 5 - 1000 characters!'),
     handleValidationErrors
 ];
 

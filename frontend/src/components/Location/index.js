@@ -34,9 +34,11 @@ const Location = () => {
     const formHide = () => {
         const form = document.querySelector('#formHide');
         const button = document.querySelector('#formHide-button');
+        const deleteButton = document.querySelector('#hideDeleteButton');
         // form.setAttribute('style', '');
         button.innerHTML === 'Edit Location' ? button.innerHTML = 'Cancel Edit' : button.innerHTML = 'Edit Location';
         button.innerHTML === 'Edit Location' ? form.setAttribute('class', 'hideLocationItems') : form.setAttribute('class', 'unhideLocationItems'); ;
+        button.innerHTML === 'Cancel Edit' ? deleteButton.setAttribute('class', 'hideLocationItems') : deleteButton.setAttribute('class', 'locationDeleteButton'); ;
 
     }
 
@@ -44,49 +46,58 @@ const Location = () => {
 
             return (
                 <div className='locationMainDiv'>
-                <h1 className='locationHeaders'>
-                    {location.name}
-                </h1>
-                {Object.values(locationImages).map(image => (
 
-                    <img className='locationImages' src={image.url} key={image.id} />
-                ))}
-                {!locationImages.length ? <LocationImage /> : null}
+                <div className='locationTopDiv'>
+
                 <div className='locationInfo'>
-                    <p className='locationPTags'>{location.address}</p>
+                    <h1 className='locationHeaders'>
+                        {location.name}
+                    </h1>
+                    <p className='locationPTags'>{location.address},  {location.city},  {location.country}</p>
 
-                    <p className='locationPTags'>{location.city}</p>
-
-                    <p className='locationPTags'>{location.country}</p>
-
-                    <p className='locationPTags'>{location.state}</p>
+                    <p className='locationPTags'>{location.state}, {location.country}</p>
 
                     <p className='locationPTags'>{location.legend}</p>
+                    {user && user.id === location.userId ?
+                    <>
+                    <div className='locationButton'>
 
+                    <button id='formHide-button' className='formHide-Button' onClick={formHide}>
+                        Edit Location
+                    </button>
+                    <div id='formHide' className='hideLocationItems' >
+                    <LocationEdit />
+                    </div>
+                    {user && user.id === location.userId ? <button id='hideDeleteButton' className='locationDeleteButton'  onClick={() => handleDelete(location ? location.id : backupLocation)}>Delete Location</button> : null}
+                    </div>
+                    </>
+                    : null
+                    }
                 </div>
-                {user && user.id === location.userId ?
-                <>
-                <div className='locationButton'>
-
-                <button id='formHide-button' onClick={formHide}>
-                    Edit Location
-                </button>
-                <div id='formHide' className='hideLocationItems' >
-                <LocationEdit />
+                <div className='locationImagesDiv'>
+                    {Object.values(locationImages).map(image => (
+                        <img className='locationImages' src={image.url} key={image.id} />
+                        ))}
                 </div>
-                {user && user.id === location.userId ? <button  onClick={() => handleDelete(location ? location.id : backupLocation)}>Delete Location</button> : null}
+                {user && user.id === location.userId && !locationImages.length ? <LocationImage /> : null}
                 </div>
-                </>
-                : null
-                }
 
-                <div className='locationCreateReviewDiv'>
-                    {user ? <ReviewCreate /> : null}
 
-                </div>
-                <div className='locationViewReviewsDiv'>
-                    <ViewReviews />
 
+                <div className='masterCreateReviewDiv'>
+
+                    {user ?<div className='locationCreateReviewDiv'> <ReviewCreate />
+                        </div>
+
+                    : null}
+                    <div className='locationReviewMasterDiv'>
+
+                    <h3 className="viewReviewsHeader">See What People Are Saying</h3>
+                    <div className='locationViewReviewsDiv'>
+                        <ViewReviews />
+
+                    </div>
+                    </div>
                 </div>
 
             </div>

@@ -1,0 +1,55 @@
+.createImageFormDiv {
+    position: relative;
+    position: 0;
+    box-sizing: content-box;
+    width: 70%;
+    height: 50%;
+
+}
+.createImageForm {
+    background-color: whitesmoke;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+}
+.createImageFormLabel {
+    margin: 2%;
+    color: black;
+}
+.createImageFormInput {
+    margin: 2%;
+    width: 40%;
+    height: 7%;
+    border-radius: 7px;
+    color: black;
+}
+.createImageFormInput:active {
+    box-shadow: blue 0 1px 1px 0;
+}
+.createImageFormButton {
+    margin: 2%;
+    color: black;
+    cursor: pointer;
+}
+.createImageFormButton:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+}
+.createImageUl {
+    display: flex;
+    flex-flow: column;
+    list-style: none;
+
+}
+
+.createImageLi {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: red;
+    margin: 1% 0;
+}

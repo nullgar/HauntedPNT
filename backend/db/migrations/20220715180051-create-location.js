@@ -39,7 +39,7 @@ module.exports = {
         allowNull: false,
       },
       legend: {
-        type: Sequelize.STRING(300),
+        type: Sequelize.STRING(1000),
         allowNull: false,
       },
       createdAt: {

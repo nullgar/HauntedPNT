@@ -1,13 +1,21 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import * as sessionActions from '../../store/session'
 import './Navigation.css';
-import DemoUserButton from '../DemoUser';
+
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
+  const dispatch = useDispatch();
+  const demoUserLogin = (e) => {
+    e.preventDefault();
+    return dispatch(sessionActions.login({
+      credential :'ZakBagans',
+      password: 'password@11' }))
 
+  }
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
@@ -15,23 +23,27 @@ function Navigation({ isLoaded }){
     );
   } else {
     sessionLinks = (
-      <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
-        <DemoUserButton />
-
-      </>
+      <div className='sessionLinksDiv'>
+        <NavLink to="/login" className='sessionLinks'>Log In</NavLink>
+        <NavLink to="/signup" className='sessionLinks'>Sign Up</NavLink>
+        <button onClick={demoUserLogin} className='demoUserButton'>Demo User</button>
+      </div>
+    );
+  }
+    return (
+      <div className='mainNavigationBar'>
+        <div className='logoDiv'>
+          <img src='https://i.imgur.com/SK1vjuo.png' className='logo' />
+          <h1 className='navigationHeader'>HauntedPNT</h1>
+        </div>
+        <div className='userButtonsMainPage'>
+          <NavLink exact to="/" className='homeSessionLink' id='profileHome'>Home</NavLink>
+          {isLoaded && sessionLinks}
+        </div>
+      </div>
     );
   }
 
-  return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
-  );
-}
+
 
 export default Navigation;

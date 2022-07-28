@@ -27,15 +27,15 @@ const ViewReviews = () => {
     return (
         <>
         <div className="viewMainReviewsDiv">
-            <h3 className="viewReviewsHeader">See What People Are Saying</h3>
-            {reviews ? Object.values(reviews).map(review => (
+
+            {reviews.length > 0 ? Object.values(reviews).map(review => (
                 <div className="viewReviewsDiv" key={review.id}>
                     <p>{review.User.username}</p>
                     <p>{review.review}</p>
                     <p>{review.rating}/5</p>
-                    {user && user.id === review.userId ? <button onClick={() => handledeleteReview(review.id)}>Delete Review</button> : null}
+                    {user && user.id === review.userId ? <button className="viewReviewsDeleteButton" onClick={() => handledeleteReview(review.id)}>Delete Review</button> : null}
                 </div>
-            )) : <p>No Reviews</p>}
+            )) : <p className="noReviewPTag">No Reviews</p>}
 
 
         </div>

@@ -9,6 +9,7 @@ import Location from "./components/Location";
 import Locations from "./components/Locations";
 import LocationNew from "./components/LocationNew";
 import LocationEdit from "./components/LocationEdit";
+import Footer from "./components/Footer";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -40,6 +41,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

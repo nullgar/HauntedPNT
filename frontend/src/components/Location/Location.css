@@ -2,64 +2,133 @@
    display: none;
 }
 
+.formHide-Button:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+
+}
 .unhideLocationItems {
-    /* display: flex; */
+    position: relative;
     display: inline;
+    background-color: whitesmoke;
+    width: 80%;
+    height: 60%;
+    padding-bottom: 4%;
+    border-radius: 20px;
 }
 .locationMainDiv {
-    display: grid;
-    grid-template-areas:
-    '. . top top'
-    'mid mid midright midright'
-    'button button button .'
-    'botleft bot bot bot'
-    ;
-    grid-template-rows: 70px 1fr 200px 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
-    /* flex-flow: column; */
-    /* flex-wrap: wrap; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    margin: 0;
+    display: flex;
+    flex-flow: column;
 }
-.locationHeaders {
-    grid-area: top;
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column; */
-    color: black;
-}
-.locationImages {
-    grid-area: mid;
-    /* display: inline; */
-    border-radius: 30px;
-    width: 60vw;
-    /* display: inline-block; */
+.locationTopDiv {
+    margin: 5%;
+    display: flex;
+    justify-content: space-around;
 }
 .locationInfo {
     display: flex;
     flex-flow: column;
-    grid-area: midright;
+    text-align: left;
 
 }
-.locationButton {
-    grid-area: button;
+.locationHeaders {
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-flow: column;
-    /* grid-area: midright; */
 
-}
-.locationCreateReviewDiv {
-    grid-area: botleft;
-}
-.locationViewReviewsDiv {
-    grid-area: bot;
-    display: flex;
-    /* flex-flow: column; */
 }
 .locationPTags {
     display: inline-flex;
+    margin: 5%;
+}
+.locationImagesDiv {
+    display: inline;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    right: 1.5%;
+}
+.locationImages {
+    border: 2px solid whitesmoke;
+    border-radius: 30px;
+    width: 700px;
+    height: 600px;
+}
+
+.locationButton {
+    display: flex;
+    justify-content: center;
+    flex-flow: row;
+    position: relative;
+    top: 10%;
+}
+
+.formHide-Button {
+    cursor: pointer;
+    position: relative;
+
+    height: 40px;
+    width: 70px;
+    margin: 0 5% 0 5%;
+    border-radius: 5px;
+    border: solid black 1px;
+    color: black;
+}
+
+.locationDeleteButton {
+    cursor: pointer;
+    height: 40px;
+    width: 70px;
+    background-color: red;
+    border: whitesmoke solid 1px;
+    border-radius: 5px;
+}
+
+.locationDeleteButton:hover {
+    background-color: rgb(206, 4, 4);
+}
+.masterCreateReviewDiv {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    margin-bottom: 5%;
+}
+.locationReviewMasterDiv {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 40%;
+}
+
+.locationCreateReviewDiv {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* left: 25%; */
+    margin-top: 2.25%;
+    border: 1px solid rgba(255, 0, 0, 0.5);
+    background-color: whitesmoke;
+    border-radius: 10px;
+    grid-area: botleft;
+    height: 30%;
+    width: 30%;
+    padding: 2%;
+
+}
+.locationViewReviewsDiv {
+    background-color: whitesmoke;
+    border: 1px solid whitesmoke;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    /* flex-flow: row; */
+    /* justify-content: center; */
+    align-items: center;
+    /* overflow-y: auto; */
+    /* overflow-y: scroll; */
+    height: 100%;
+    width: 95%;
+    flex-flow: column;
 }

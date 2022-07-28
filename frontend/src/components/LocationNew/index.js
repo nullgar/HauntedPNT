@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createLocation} from "../../store/location";
+import './LocationNew.css';
 
 const LocationNew = () => {
     const [name, setName] = useState('')
@@ -37,10 +38,7 @@ const LocationNew = () => {
 
 
         ;
-        // console.log(res)
 
-        // const res = await dispatch(createLocation(data))
-        //
         if (res) {
             return history.push('/')
         }
@@ -50,32 +48,33 @@ const LocationNew = () => {
 
 
     return (
-        <div>
-        <ul>
-            {valErrors.map(err => (
-                <li key={err}>{err}</li>
-            ))}
-        </ul>
+        <div className="newLocationFormDiv">
         {user ?
-        <form onSubmit={handleSubmit}>
-            <label htmlFor='name'>Name</label>
-            <input name='name' value={name} onChange={(e) => setName(e.target.value)} required ></input>
+        <form className="newLocationForm" onSubmit={handleSubmit}>
+            <ul className="newLocationUl">
+            {valErrors.map(err => (
+                <li className="newLocationLi" key={err}>{err}</li>
+            ))}
+            </ul>
+            <h3 className="newLocationFormHeader" >Create A New Location</h3>
+            <label className="newLocationLabel" htmlFor='name'>Name</label>
+            <input className="newLocationInput" name='name' value={name} onChange={(e) => setName(e.target.value)} required ></input>
 
-            <label htmlFor='address'>Address</label>
-            <input name='address' value={address} onChange={(e) => setAddress(e.target.value)} required ></input>
+            <label className="newLocationLabel" htmlFor='address'>Address</label>
+            <input className="newLocationInput" name='address' value={address} onChange={(e) => setAddress(e.target.value)} required ></input>
 
-            <label htmlFor="city">City</label>
-            <input name='city' value={city} onChange={(e) => setCity(e.target.value)} required ></input>
+            <label className="newLocationLabel" htmlFor="city">City</label>
+            <input className="newLocationInput" name='city' value={city} onChange={(e) => setCity(e.target.value)} required ></input>
 
-            <label htmlFor="state">State</label>
-            <input name='state' value={state} onChange={(e) => setState(e.target.value)} required ></input>
+            <label className="newLocationLabel" htmlFor="state">State</label>
+            <input className="newLocationInput" name='state' value={state} onChange={(e) => setState(e.target.value)} required ></input>
 
-            <label htmlFor="country">Country</label>
-            <input name='country' value={country} onChange={(e) => setCountry(e.target.value)} required ></input>
+            <label className="newLocationLabel" htmlFor="country">Country</label>
+            <input className="newLocationInput" name='country' value={country} onChange={(e) => setCountry(e.target.value)} required ></input>
 
-            <label htmlFor="legend">Legend</label>
-            <textarea name='legend' value={legend} onChange={(e) => setLegend(e.target.value)} required ></textarea>
-            <button>Submit</button>
+            <label  className="newLocationLabel" htmlFor="legend">Legend</label>
+            <textarea className="newLocationTextArea" name='legend' value={legend} onChange={(e) => setLegend(e.target.value)} required ></textarea>
+            <button className="newLocationButton" >Submit</button>
         </form>
         : <h3>You must be logged in to create a location!</h3>}
         </div>
