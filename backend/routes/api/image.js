@@ -12,7 +12,7 @@ const validateImage = [
         .isLength({ min: 1, max: 250 })
         .withMessage('Url needs to be between 1 - 250 characters.')
         .matches(/^(https:\/\/).+((.jpg)|(.jpeg)|(.png)|(.svg))$/)
-        .withMessage('Url needs to end in .jpg, .jpeg, .png, or .svg.'),
+        .withMessage('Url needs to be valid and end in .jpg, .jpeg, .png, or .svg.'),
         handleValidationErrors
 ]
 router.get(
