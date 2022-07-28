@@ -10,7 +10,6 @@ html {
     scroll-behavior: smooth;
   }
 * {
-    /* color: rgba(255, 255, 255, 0) */
-    /* color: rgba(60, 60, 60, 0.15); */
+    font-family: 'Montserrat', sans-serif;
     color: #fff;
 }

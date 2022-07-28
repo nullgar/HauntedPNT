@@ -79,7 +79,7 @@ const Location = () => {
                         <img className='locationImages' src={image.url} key={image.id} />
                         ))}
                 </div>
-                {!locationImages.length ? <LocationImage /> : null}
+                {user && user.id === location.userId && !locationImages.length ? <LocationImage /> : null}
                 </div>
 
 

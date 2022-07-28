@@ -1,0 +1,58 @@
+.signUpFormDiv{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.signUpForm{
+    background-color: whitesmoke;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    border-radius: 10px;
+    margin: 10%;
+    width: 30%;
+    height: 20%;
+    padding: 5%;
+}
+.signUpFormHeader {
+    color: black;
+    text-align: center;
+}
+.signUpFormLabel{
+    text-align: left;
+    color: black;
+}
+.signUpFormInput{
+    color: black;
+    height: 50px;
+    width: 95%;
+    margin: 3% 0 3% 0;
+    border-radius: 10px;
+}
+.signUpFormButton{
+    color: black;
+    height: 50px;
+    width: 100px;
+    border-radius: 10px;
+}
+.signUpFormButton:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+
+}
+.signUpFormUl {
+    display: flex;
+    flex-flow: column;
+    list-style: none;
+
+}
+
+ .signUpFormLi {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: red;
+    margin: 1% 0;
+}

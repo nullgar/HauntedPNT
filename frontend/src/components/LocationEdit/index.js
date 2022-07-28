@@ -100,7 +100,7 @@ const LocationEdit = () => {
         </form>
 
         </div>
-    : <h1>wait</h1>}
+    : <h1>Please go back home!</h1>}
     </div>
     )
 }

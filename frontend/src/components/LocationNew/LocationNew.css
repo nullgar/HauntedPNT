@@ -1,11 +1,11 @@
-.loginFormDiv{
+.newLocationFormDiv{
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
 
 }
-.loginForm{
+.newLocationForm{
     background-color: whitesmoke;
     display: flex;
     flex-flow: column;
@@ -16,40 +16,48 @@
     height: 20%;
     padding: 5%;
 }
-.loginFormHeader {
+.newLocationFormHeader {
     color: black;
     text-align: center;
 }
-.loginFormLabel{
+.newLocationLabel{
     text-align: left;
     color: black;
 }
-.loginFormInput{
+.newLocationInput{
     color: black;
     height: 50px;
     width: 95%;
     margin: 3% 0 3% 0;
     border-radius: 10px;
 }
-.loginFormButton{
+.newLocationTextArea{
+    color: black;
+    height: 300px;
+    width: 95%;
+    margin: 3% 0 3% 0;
+    resize: none;
+    border-radius: 10px;
+}
+.newLocationButton{
     color: black;
     height: 50px;
     width: 100px;
     border-radius: 10px;
 }
-.loginFormButton:hover {
+.newLocationButton:hover {
     background-color: rgb(230, 230, 230);
     cursor: pointer;
 
 }
-.loginFormUl {
+.newLocationUl {
     display: flex;
     flex-flow: column;
     list-style: none;
 
 }
 
- .loginFormLi {
+ .newLocationLi {
     justify-content: center;
     align-items: center;
     text-align: center;

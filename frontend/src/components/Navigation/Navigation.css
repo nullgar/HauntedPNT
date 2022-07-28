@@ -8,8 +8,6 @@
     z-index: 1;
     border: 3px solid rgba(0, 0, 0, 0.60) ;
     box-sizing: border-box;
-    /* position: 1; */
-
     top: 0;
 }
 .logoDiv {
@@ -20,14 +18,16 @@
 
 }
 .logo {
-    border: solid black 1px;
-    border-radius: 50px;
-    object-fit: contain;
+    border: solid black 3px;
+    border-radius: 100%;
     width: 6%;
-    height: 6%;
-    transform: rotate(90deg);
-    /* padding-left: 35%; */
-    /* background-repeat: no-repeat; */
+    height: 5%;
+    animation: spin 10s linear infinite;
+    /* transform: rotate(90deg); */
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 .navigationHeader {
     color: black;
@@ -38,12 +38,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* height: 40px; */
     padding-right: 5%;
 }
 .sessionLinksDiv {
     display: flex;
-    /* margin: 20%; */
 }
 .sessionLinks {
     font-size: 17px;
@@ -53,11 +51,6 @@
     margin: 7%;
 }
 
-
-/* image {
-    height: 100px;
-    width: 100px;
-} */
 .homeSessionLink{
     font-size: 17px;
     color: black;
@@ -82,6 +75,10 @@
     margin-left: 1%;
     cursor: pointer;
 }
+.inactiveButton:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+}
 .activeButton {
     border: 2px solid black;
     color: black;
@@ -91,18 +88,29 @@
     border-radius: 60px;
     cursor: pointer;
 }
-
+.activeButton:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+}
 .demoUserButton {
+    text-align: center;
     border: 2px solid black;
     color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 4%;
     margin-right: 3%;
-    font-weight: bold;
     margin-left: 10px;
-    border-radius: 100px;
+    border-radius: 30px;
     height: 50px;
     width: 50px;
     background-color: whitesmoke;
+    cursor: pointer;
+}
+
+.demoUserButton:hover {
+    background-color: rgb(230, 230, 230);
     cursor: pointer;
 }
 
@@ -122,6 +130,10 @@
     border: 2px solid black;
     cursor: pointer;
     color: black;
+}
+.profile-dropdownStyleButton:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
 }
 .icon {
     color: black;
