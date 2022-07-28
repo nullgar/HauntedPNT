@@ -1,0 +1,45 @@
+.footerMainDiv {
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-around;
+    position: sticky;
+    bottom: 0%;
+
+}
+
+.footerMainDivOpen {
+    height: 150px;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-around;
+    position: sticky;
+    bottom: 0%;
+}
+
+.footerDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footerDivTech {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+.innerTechDiv {
+    display: flex;
+
+}
+.footerFont {
+    color: black;
+}
+
+.techLogo {
+    height: 3rem;
+    width: 3rem;
+}
+
+#moreInfoDiv {
+    cursor: pointer;
+}

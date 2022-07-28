@@ -23,7 +23,6 @@
     width: 6%;
     height: 5%;
     animation: spin 10s linear infinite;
-    /* transform: rotate(90deg); */
 }
 @keyframes spin {
     0% { transform: rotate(0deg); }
