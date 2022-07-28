@@ -53,7 +53,7 @@ const Location = () => {
                     <h1 className='locationHeaders'>
                         {location.name}
                     </h1>
-                    <p className='locationPTags'>{location.address},  {location.city},  {location.country}</p>
+                    <p className='locationPTags'>{location.address},  {location.city}</p>
 
                     <p className='locationPTags'>{location.state}, {location.country}</p>
 
