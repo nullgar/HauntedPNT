@@ -18,7 +18,6 @@ const create = (image) => {
 
 export const loadImages = () => async dispatch => {
     const res = await csrfFetch(`/api/image/`);
-    console.log('load image fires off')
     if (res.ok) {
         const images = await res.json();
         dispatch(load(images));

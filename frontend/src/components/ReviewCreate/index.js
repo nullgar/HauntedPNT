@@ -35,7 +35,7 @@ const ReviewCreate = () => {
             setRating(0)
             resetStars()
         }
-        // console.log(payload)
+
     };
 
     const handleStars = (e) => {

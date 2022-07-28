@@ -48,11 +48,8 @@ router.get(
     asyncHandler(async (req, res) => {
 
         const data = req.body
-        // console.log('this---------------', data)
-        // const id = Number(locationId)
         const locations = await Location.findAll();
 
-        // console.log(locations)
         if (locations) {
             return res.json(
                 locations

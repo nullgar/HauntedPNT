@@ -34,7 +34,6 @@ const remove = (locationId) => {
 export const loadLocations = () => async dispatch => {
 
     const res = await csrfFetch(`/api/location/`);
-    // console.log(locationId)
     if (res.ok) {
         const locations = await res.json();
         dispatch(load(locations));
@@ -76,7 +75,6 @@ export const updateLocation = ({locationId, data}) => async (dispatch) => {
 
 }
 export const removeLocation = (locationId) => async (dispatch) => {
-    // console.log(locationId)
     const res = await csrfFetch(`/api/location/${locationId}`, {
         method: 'DELETE',
     });
@@ -92,34 +90,16 @@ const locationReducer = (state = {}, action) => {
     switch (action.type) {
         case LOAD_LOCATIONS:
             const loadedLocations = {...state};
-            // const images = {};
             Object.values(action.locations).forEach(location => {
                 loadedLocations[location.id] = location
-                // console.log(loadedLocations[location.id].Images)
-                // Object.values(loadedLocations[location.id].Images).forEach(image => {
-                    // images[image.id] = image
-
-                    // if (action.location.id === image.locationId) {
-
-                        // loadedLocations[location.id].Images = images
-                    // }
-                // })
             })
             return loadedLocations;
 
         case CREATE_LOCATIONS:
             const newLoadedLocations = {...state};
-            // const newImages = {};
             action.newLocations.forEach(location => {
                 newLoadedLocations[location.id] = location
-                // newLoadedLocations[location.id].Images.forEach(image => {
-                //     newImages[image.id] = image
-                //     if (location.id === image.locationId) {
-                //         newLoadedLocations[location.id].Images = newImages
-                //     }
-                // })
             });
-            console.log(newLoadedLocations)
             return newLoadedLocations;
         case REMOVE_LOCATION:
             const removedLocations = {...state}

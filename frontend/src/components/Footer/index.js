@@ -7,9 +7,6 @@ const Footer = () => {
     const info = document.querySelector('#info');
 
     const handleClick = () => {
-        console.log('click')
-        // info.innerHTML === 'More Info ^' ? info.innerHTML = 'Close X' : info.innerHTML = 'More Info ^';
-        // info.innerHTML === 'Close X' ? bar.setAttribute('class', 'footerMainDivOpen') : bar.setAttribute('class', 'footerMainDiv');
         setFoot(!foot)
     }
     return (
