@@ -37,8 +37,8 @@ const validateLocation = [
     check('legend')
         .exists()
         .withMessage('Legend cannot be empty!.')
-        .isLength({ min: 5, max: 1000 })
-        .withMessage('Legends need to be between 5 - 1000 characters!'),
+        .isLength({ min: 5, max: 900 })
+        .withMessage('Legends need to be between 5 - 900 characters!'),
     handleValidationErrors
 ];
 

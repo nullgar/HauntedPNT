@@ -57,7 +57,11 @@ const Location = () => {
 
                     <p className='locationPTags'>{location.state}, {location.country}</p>
 
-                    <p className='locationPTags'>{location.legend}</p>
+                    <div className='locationArea'>
+                        <p className='locationLegend'>{location.legend}</p>
+
+                    </div>
+
                     {user && user.id === location.userId ?
                     <>
                     <div className='locationButton'>

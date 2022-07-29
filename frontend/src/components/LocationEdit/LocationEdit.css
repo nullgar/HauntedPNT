@@ -24,6 +24,7 @@
 .editLocationTextArea {
     height: 10%;
     color: black;
+    resize: none;
 }
 .editLocationText {
     color: black;

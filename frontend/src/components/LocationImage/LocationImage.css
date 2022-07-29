@@ -9,11 +9,13 @@
 .createImageForm {
     background-color: whitesmoke;
     display: flex;
+    position: relative;
+    left: 10%;
     flex-flow: column;
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 100%;
+    width: 80%;
     border-radius: 50px;
 }
 .createImageFormLabel {
