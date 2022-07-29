@@ -1,0 +1,28 @@
+.errorDiv {
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.errorContainer {
+    width: 33%;
+    height: 50%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+    border-radius: 10px;
+
+}
+.ghost {
+    max-width: 30%;
+    max-height: 30%;
+    color: red;
+}
+.errorFont {
+    color: red;
+}

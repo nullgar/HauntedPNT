@@ -56,7 +56,13 @@
     font-weight: bold;
     text-decoration: none;
     margin-right: 30px;
-    font-family: sans-serif;
+}
+.active {
+    font-size: 17px;
+    font-weight: bold;
+    color: blue;
+    text-decoration: none;
+    margin: 7%;
 }
 .activeHomeSessionLink {
     font-size: 17px;
@@ -66,13 +72,21 @@
     margin-right: 30px;
 }
 .inactiveButton{
-    border: 2px solid black;
+    /* border: 2px solid black;
     color: black;
     height: 50px;
     width: 50px;
     border-radius: 50px;
     margin-left: 1%;
+    cursor: pointer; */
+    border: 2px solid black;
+    color: black;
+    border: 2px solid #DDDDDD;
+    height: 50px;
+    width: 50px;
+    border-radius: 60px;
     cursor: pointer;
+
 }
 .inactiveButton:hover {
     background-color: rgb(230, 230, 230);

@@ -5,6 +5,7 @@ import { loadImages } from '../../store/image';
 import { loadLocations, removeLocation } from '../../store/location';
 import LocationEdit from '../LocationEdit';
 import LocationImage from '../LocationImage';
+import Page404 from '../Page404';
 import ReviewCreate from '../ReviewCreate';
 import ViewReviews from '../ViewReviews';
 import './Location.css'
@@ -107,7 +108,7 @@ const Location = () => {
             </div>
 
             );
-        }
+        } else { return <Page404 />}
 };
 
 export default Location;
