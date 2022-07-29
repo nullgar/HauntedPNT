@@ -33,7 +33,7 @@ const validateLocation = [
         .exists()
         .withMessage('Please provide the locations Country.')
         .isLength({ min: 3, max: 50 })
-        .withMessage('Country needs to be between 5 - 50 characters.'),
+        .withMessage('Country needs to be between 3 - 50 characters.'),
     check('legend')
         .exists()
         .withMessage('Legend cannot be empty!.')
