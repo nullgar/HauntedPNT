@@ -10,6 +10,7 @@ import Locations from "./components/Locations";
 import LocationNew from "./components/LocationNew";
 import LocationEdit from "./components/LocationEdit";
 import Footer from "./components/Footer";
+import Page404 from "./components/Page404";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -30,7 +31,7 @@ function App() {
           <Route exact path='/location/new'>
             <LocationNew />
           </Route>
-          <Route path='/location/:locationId'>
+          <Route exact path='/location/:locationId'>
             <Location />
           </Route>
           <Route path="/login">
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route>
+            <Page404 />
           </Route>
         </Switch>
       )}

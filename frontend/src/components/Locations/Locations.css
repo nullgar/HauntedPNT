@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     background-color: #1c1e2d;
+    height: 100%;
 }
 
 .eachLocationDiv {
@@ -12,6 +13,7 @@
     justify-content: center;
     align-items: center;
     width: 25%;
+    max-height: 60%;
     background-color: whitesmoke;
     border: 1px solid #ebebeb;
     margin-top: 2%;
@@ -32,6 +34,8 @@
 
 .mainLocationsHeader {
     color: black;
+    word-wrap: break-word;
+    text-align: center;
 }
 .mainLocationsInfo {
     color: black;

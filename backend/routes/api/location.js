@@ -59,7 +59,7 @@ router.get(
     })
 );
 router.get(
-    '/:locationId',
+    '/^\/\d+/',
     asyncHandler(async (req, res) => {
         const {locationId} = req.params
         const location = await Location.findByPk(locationId);

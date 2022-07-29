@@ -36,10 +36,10 @@ function Navigation({ isLoaded }){
           <img src='https://i.imgur.com/SK1vjuo.png' className='logo' />
           <h1 className='navigationHeader'>HauntedPNT</h1>
         </div>
-        <div className='userButtonsMainPage'>
-          <NavLink exact to="/" className='homeSessionLink' id='profileHome'>Home</NavLink>
+        <nav className='userButtonsMainPage'>
+          <NavLink activeClassName="selected" exact to="/" className='homeSessionLink' id='profileHome'>Home</NavLink>
           {isLoaded && sessionLinks}
-        </div>
+        </nav>
       </div>
     );
   }
