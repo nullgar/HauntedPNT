@@ -64,3 +64,7 @@
     color: red;
     margin: 1% 0;
 }
+
+.notLoggedInDiv {
+    height: 100vh;
+}

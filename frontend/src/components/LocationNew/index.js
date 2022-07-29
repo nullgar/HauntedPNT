@@ -42,7 +42,7 @@ const LocationNew = () => {
         if (res) {
             return history.push('/')
         }
-
+        if (!user) history.push('/')
     }
 
 
@@ -76,7 +76,7 @@ const LocationNew = () => {
             <textarea className="newLocationTextArea" name='legend' value={legend} onChange={(e) => setLegend(e.target.value)} required ></textarea>
             <button className="newLocationButton" >Submit</button>
         </form>
-        : <h3>You must be logged in to create a location!</h3>}
+        : <div className="notLoggedInDiv" ><h1>You need to be Logged In to Create a Location!</h1></div>}
         </div>
     )
 }
