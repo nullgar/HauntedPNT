@@ -6,30 +6,38 @@ You can visit my project at [HauntedPBT](https://hauntedpnt.herokuapp.com/)
 
 # Technologies Used
 
+
  * [JavaScript](https://www.javascript.com/)
- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"  style="pointer-events: none; display: inline-block; width: 50px;" />
+ 
+ [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"  style="pointer-events: none; display: inline-block; width: 50px;" target="_blank" />](https://www.javascript.com/)
  
  * CSS
- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" style='width: 50px' />
+ 
+ [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" style='width: 50px' target="_blank" />](#)
 
  * [React](https://reactjs.org/)
- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" style='width: 50px' />
+ 
+ [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" style='width: 50px' target="_blank" />](https://reactjs.org/)
 
  * [Redux](https://redux.js.org/)
- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" style='width: 50px' />
+ 
+ [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" style='width: 50px' target="_blank" />](https://redux.js.org/)
 
 
  * [Express](https://expressjs.com/)
- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" style='width: 50px; background-color: white;' />
+ 
+ [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" style='width: 50px; background-color: white;' target="_blank" />](https://expressjs.com/)
 
 
 
  * [PostgreSQL](https://www.postgresql.org/)
- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" style='width: 50px' />
+ 
+ [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" style='width: 50px' target="_blank" />](https://www.postgresql.org/)
 
 
  * [Node Js](https://nodejs.org/en/)
- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" style='width: 50px' />
+ 
+ [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" style='width: 50px' target="_blank" />](https://nodejs.org/en/)
 
 # How to Install Application via Command Line
 Go to [Repo](https://hauntedpnt.herokuapp.com/)
