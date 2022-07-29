@@ -2,7 +2,7 @@
 
 Hi! I'm Jonatan Aguilar and this is my first Yelp like **FullStack** single page application.  
 
-You can visit my project at [HauntedPBT](https://hauntedpnt.herokuapp.com/)
+You can visit my project at [HauntedPNT](https://hauntedpnt.herokuapp.com/)
 
 # Technologies Used
 
