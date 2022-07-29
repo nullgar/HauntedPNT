@@ -37,7 +37,7 @@ function Navigation({ isLoaded }){
           <h1 className='navigationHeader'>HauntedPNT</h1>
         </div>
         <nav className='userButtonsMainPage'>
-          <NavLink activeClassName="selected" exact to="/" className='homeSessionLink' id='profileHome'>Home</NavLink>
+          <NavLink exact to="/" className='sessionLinks' id='profileHome'>Home</NavLink>
           {isLoaded && sessionLinks}
         </nav>
       </div>

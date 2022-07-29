@@ -52,10 +52,17 @@
 
 .homeSessionLink{
     font-size: 17px;
-    color: black;
+    color: blue;
     font-weight: bold;
     text-decoration: none;
     margin-right: 30px;
+}
+.selected {
+    font-size: 17px;
+    font-weight: bold;
+    color: blue;
+    text-decoration: none;
+    margin: 7%;
 }
 .active {
     font-size: 17px;
@@ -66,7 +73,7 @@
 }
 .activeHomeSessionLink {
     font-size: 17px;
-    color: black;
+    color: blue;
     font-weight: bold;
     text-decoration: none;
     margin-right: 30px;
@@ -82,8 +89,8 @@
     border: 2px solid black;
     color: black;
     border: 2px solid #DDDDDD;
-    height: 50px;
-    width: 50px;
+    min-height: 50px;
+    min-width: 50px;
     border-radius: 60px;
     cursor: pointer;
 
@@ -98,7 +105,7 @@
     border: 2px solid #DDDDDD;
     height: 50px;
     width: 50px;
-    border-radius: 60px;
+    border-radius: 100%;
     cursor: pointer;
 }
 .activeButton:hover {
